@@ -1,26 +1,11 @@
-CLTPHP5.8
+乐橙CMS内容管理系统
 ===============
-CLTPHP5.8内容管理系统
+乐橙CMS内容管理系统4.0.23
+--优化采集
+--调整音乐PC端样式
+--调整目录结构
 
-+ 全新的前台页面 
-+ 文章模块新增tag管理
-+ 后台栏目非超级管理员编辑后，授权清空的bug
-+ 后台编辑器火狐浏览器兼容性bug修改
-
-CLTPHP5.7.5内容管理系统：
-
- + 升级TP框架到TP5.1.19
- + 新增后台栏目权限
- + 管理员登录状态bug
- + 后台日期插件优化
- + 分页后点击搜索未重置初始页码的bug
-
-
-> CLTPHP5.7.5的运行环境要求PHP5.6以上。
-
-> CLTPHP5.6及后续版本运行目录: public/（请务必将域名解析到public目录，通过域名来访问项目。用“域名+public”来访问，会导致页面错乱）
-
-> 官网：[CLTPHP官网](http://www.cltphp.com)
+> 官网：[乐橙官网](http://strjson.com)
 
 ## 目录结构
 
@@ -61,7 +46,7 @@ www  WEB部署目录（或者子目录）
 │  └─...                更多
 │
 ├─public                WEB目录（对外访问目录）
-│  ├─index.php          入口文件
+│  ├─index.php          入口文件(已废弃)
 │  ├─static             静态资源文件目录
 │  ├─router.php         快速测试文件
 │  └─.htaccess          用于apache的重写
@@ -88,4 +73,9 @@ www  WEB部署目录（或者子目录）
 ├─LICENSE.txt           授权说明文件
 ├─README.md             README 文件
 ├─think                 命令行入口文件
+├─template              模板文件夹
+│  ├─admin              后台模板
+│  ├─lecheng            前台模板
+
+
 ~~~
