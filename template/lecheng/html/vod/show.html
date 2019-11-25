@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="lecheng/html/seo/vod_show"}
+	{include file="lecheng/html/block/include"}
+</head>
+<body>
+	{include file="lecheng/html/block/head"}
+    <div class="container">
+        <div class="row">
+            <div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box">
+					<div class="stui-pannel_hd">
+						<div class="stui-pannel__head active bottom-line clearfix">
+							<h3 class="title">
+								<img src="{$templatePath}icon/icon_27.png"/>
+								{$vodTypeName}
+							</h3>
+						</div>
+						<!-- 筛选 -->
+						<ul class="stui-screen__list type-slide bottom-line-dot clearfix typeType">
+							<li>
+								<span class="text-muted">按类型</span>
+							</li>
+
+
+							<li {if $typeId eq "all"} class="active" {/if} data-cat="all"><a class="catType" href="javascript:;" data-cat="all">全部</a></li>
+							{foreach $typeData as $k=>$v}
+							<li {if $typeId eq $k} class="active" {/if} data-cat="{$k}"><a href="javascript:;" class="text-muted catType" data-cat="{$k}">{$v}</a></li>
+							{/foreach}
+												  	
+						</ul>
+
+						<ul class="stui-screen__list type-slide bottom-line-dot clearfix areaType">
+							<li>
+								<span class="text-muted">按地区</span>
+							</li>
+							<li {if $area eq "all"} class="active" {/if} class="area" data-area="all"><a data-area="all"  class="area" href="javascript:;">全部</a></li>
+
+							{foreach $areaData as $kk=>$vv}
+							<li data-area="{$kk}" {if $area eq $kk} class="active" {/if}><a  class="area" href="javascript:;" data-area="{$kk}">{$vv}</a></li>
+							{/foreach}
+
+						</ul>
+
+
+						<ul class="stui-screen__list type-slide bottom-line-dot clearfix yearType">
+							<li>
+								<span class="text-muted">按年份</span>
+							</li>
+
+							<li {if $dyTime eq "all"} class="active" {/if} data-year="all"><a data-year="all" class="year" href="javascript:;">全部</a></li>
+							
+							{foreach $Think.config.vod_year_data as $k=>$v}
+							<li {if $dyTime eq $v}  class="active" {/if} data-year="{$v}"><a class="year" href="javascript:;">{$v}</a></li>
+							{/foreach}
+
+						</ul>
+						<!-- end 筛选 -->
+					</div>
+					<div class="stui-pannel_bd">
+						<ul class="stui-vodlist clearfix">
+
+							{notempty name="$listData"}
+							{foreach $listData as $kk=>$vv}
+								{if $kk <27}
+							<li class="col-md-7 col-sm-4 col-xs-3">
+								<div class="stui-vodlist__box stui-vodlist__bg">
+									<a  style="border-radius: 8px" class="stui-vodlist__thumb lazyload" href="/index/play/play/wd/{$vv.title}/url/{$vv.coverpage|base64_encode}.html" title="{$vv.title}" data-original="{$vv.cover}">
+										<span class="play hidden-xs"></span>
+										<span class="pic-text text-right">{$vv.tag}</span>
+									</a>
+									<div class="stui-vodlist__detail active">
+										<h4 class="title text-overflow"><a href="/index/play/play/wd/{$vv.title}/url/{$vv.coverpage|base64_encode}.html" title="{$vv.title}">{$vv.title}</a></h4>
+										<p class="text text-overflow text-muted hidden-xs">{$vv.desc|default='内详'}</p>
+									</div>
+								</div><!-- 列表-->
+							</li>
+							{/if}
+							{/foreach}
+							{/notempty}
+
+						</ul>
+					</div>
+				</div>				
+			</div>		
+			{include file="lecheng/html/block/page"}<!-- 翻页-->
+        </div>
+    </div>
+	{include file="lecheng/html/block/foot"}
+</body>
+</html>

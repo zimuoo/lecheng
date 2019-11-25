@@ -1,0 +1,70 @@
+@charset "UTF-8";
+html {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 20px;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    min-height: 40px;
+}
+.hover{ opacity: .8; }
+.flex-wrap{}
+.paiban {
+    display: block;
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+.flex-con{-webkit-box-flex: 1; -webkit-flex: 1;flex: 1; color: #543e3e;}
+.flex-vertical{-webkit-box-orient: vertical;-webkit-flex-flow: column;flex-flow: column;}
+.border-t{ position:relative;  }
+.border-t:before{content: '';position: absolute;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);     -webkit-transform-origin: 0 0;transform-origin: 0 0; }
+#wrap{ height: 100%;}
+.border-t, .border-b{position: relative;background-color: #fff;}
+#footer ul a{      height: 60px;
+    padding-top: 30px;
+    padding-bottom: 1px;
+    background: url() no-repeat center 2px;
+    font-size: 0.6rem;
+    background-size: auto 1.1rem;
+    text-align: center;}
+        #footer ul a.active{ color: #f52737; }
+        #footer ul a:nth-child(1){ background-image: url(../img/sy.png); background-size:30px 30px;}
+        #footer ul a:nth-child(2){ background-image: url(../img/cx.png); background-size:30px 30px;}        
+        #footer ul a:nth-child(3){ background-image: url(../img/book.png); background-size:30px 30px;}
+        #footer ul a:nth-child(4){ background-image: url(../img/zb.png); background-size:30px 30px;}
+        #footer ul a:nth-child(5){ background-image: url(../img/yy.png); background-size:30px 30px;}
+        #footer ul a:nth-child(1).active{ background-image: url(../img/sy.png); background-size:30px 30px;}
+        #footer ul a:nth-child(2).active{ background-image: url(../img/cx.png); background-size:30px 30px;}        
+        #footer ul a:nth-child(3).active{ background-image: url(../img/book.png); background-size:30px 30px;}
+        #footer ul a:nth-child(4).active{ background-image: url(../img/zb.png); background-size:30px 30px;}
+        #footer ul a:nth-child(5).active{ background-image: url(../img/yy.png); background-size:30px 30px;}
+        .flex-con{
+          overflow: auto;
+        }
+.on{
+    background-color: #FF9900;
+    color: #FFFFFF;
+}
+.select {
+	margin-left:2px;
+    margin-top: 3px;
+    border-radius: 5px;
+
+    position: absolute;
+    text-align: center;
+    text-align-last: center;
+
+}
+        
+        
+        
+        
+        
+        
+        
+        
+        

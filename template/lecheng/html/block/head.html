@@ -1,0 +1,100 @@
+<header class="stui-header__top clearfix" id="header-top">
+	<div class="container">	
+		<div class="row">
+			<div class="stui-header_bd clearfix">					
+			    <div class="stui-header__logo">
+					<a class="logo" style="height:34px" href="/index/index/index.html"></a>										  
+				</div>
+				<ul class="stui-header__menu" style="margin-left:-20px">
+					<li><a href="/">首页</a></li>
+					{notempty name="$navData"}
+						{foreach $navData as $kk=>$vv}	
+						{if $kk<4}
+						<li class="hidden-xs"><a href="{$vv.url|default=''}">{$vv.title|default=''}</a></li>
+						{/if}
+						{/foreach}
+					{/notempty}
+					<li>
+						<a href="javascript:;">更多 <i class="icon iconfont icon-moreunfold"></i></a>
+						<ul class="dropdown" style="z-index: 99999999999999;margin-left: 1.3rem;">
+
+							{notempty name="$navData"}
+							{foreach $navData as $kk=>$vv}
+		                    <li><a href="{$vv.url|default=''}">{$vv.title|default=''}</a></li>
+		                    {/foreach}
+							{/notempty}
+
+		                   
+						</ul>
+					</li>
+
+
+				</ul>
+				<script type="text/javascript" src="{$templatePath}js/jquery.autocomplete.js"></script>
+				<div class="stui-header__search"> 
+			        <form id="search" name="search" method="get" action="/index/search/index.html" onSubmit="return submit();">
+    					<input type="text" id="wd" name="wd" class="mac_wd form-control" value="" placeholder="请输入关键词..."/>
+						<button class="submit" id="searchbutton" type="submit" name="submit"><i class="icon iconfont icon-search"></i></button>							
+					</form>
+					<a class="search-close visible-xs" href="javascript:;"><i class="icon iconfont icon-close"></i></a>
+			    </div>		    
+				<ul class="stui-header__user">	
+				
+				
+					<li class="visible-xs">
+						<a href="{$systemConfig.app_down_url}"><i class="icon iconfont icon-icondownload"></i></a>
+					</li>
+					
+					<li>
+						<a href="javascript:;"><i class="icon iconfont icon-clock"></i></a>
+						<div class="dropdown">					
+							<h5 class="margin-0 text-muted">
+								<a class="historyclean text-muted pull-right" href="">清空</a>
+								播放记录
+							</h5>
+							<ul class="history clearfix" id="stui_history"></ul>
+						</div>	
+					</li>
+				
+
+					
+
+					<li class="visible-xs">
+						<a class="open-search" href="javascript:;"><i class="icon iconfont icon-search"></i></a>
+					</li>
+				</ul>		
+		  	</div>		
+		</div>	  							    
+	</div>
+</header>
+<script type="text/javascript">
+	$(".stui-header__user li,.stui-header__menu li").click(function(){
+		$(this).find(".dropdown").toggle();
+	});
+	$(".open-search").click(function(){
+		var Seacrh=$(".stui-header__search");
+		Seacrh.addClass("active").siblings().hide();
+		Seacrh.find(".form-control").focus();
+		$(".search-close").click(function(){
+			Seacrh.removeClass("active").siblings().show();
+		});
+	});
+	function submit(){
+		var str = document.getElementById('wd').value;
+		if (str==""||str==null){
+			alert("请输入影片关键词")
+		}else{
+			//var k= $('#mode').val();
+			var s=$('#wd').val();
+			s=s.replace(/\s/g,"");
+			//window.open("/"+k+"-"+s+".html", '_blank');
+			//var tempwindow=window.open('_blank'); // 先打开页面
+			//tempwindow.location="/"+k+"-"+s+".html";
+
+			window.location.href="/index/search/index/wd/"+s;
+
+		}
+	}
+</script>
+<script type="text/javascript" src="{$templatePath}/js/homey.js"></script>
+

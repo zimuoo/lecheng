@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="lecheng/html/seo/index"}   
+	{include file="lecheng/html/block/include"}
+	<style type="text/css">
+		.stui-header__top{ background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);}
+		.stui-header__top.headroom--not-top{ background: #292838;}
+	</style>
+</head>
+<body style="padding: 0;">
+	{include file="lecheng/html/block/head"}
+	{include file="lecheng/html/index/banner"}<!-- 幻灯 -->
+
+	    <!-- 公告start -->
+		{if $systemConfig.vod_gonggao_switch eq 1}
+			{if $systemConfig.vod_note}
+			<div class="stui-pannel-bg clearfix" style='background-color:{$systemConfig.vod_note_color}'>
+			 <div class="clearfix">
+			  <div class="container stui-pannel_hd">
+			   <div class="stui-pannel__head clearfix">
+				<li class="active">
+				 <table border="0" width="100%">
+				  <tbody>
+				   <tr>
+					<!-- <td width="22" height="22"> <img src="images/notice.png" width="22" height="22" />
+					</td>
+					<td width="12" height="22"></td>  -->
+					<td><strong>
+					  <marquee scrollamount="6" direction="left" align="Middle" style="padding-right:20px;color:#fff;margin-top: 5px;">
+					   {$systemConfig.vod_note|default=''}
+					  </marquee></strong></td>
+				   </tr>
+				  </tbody>
+				 </table> </li>
+			   </div>
+			  </div>
+			 </div>
+			</div>
+			{/if}
+		{/if}
+    <!-- 公告end --> 
+
+    <div class="container">
+        <div class="row">       	
+        	{include file="lecheng/html/index/hot"}<!-- 推荐 -->
+        	{include file="lecheng/html/index/list"}<!-- 列表 -->
+        	
+        </div>
+    </div>
+    {include file="lecheng/html/index/logo"}
+    {include file="lecheng/html/index/link"}
+	{include file="lecheng/html/block/foot"}
+	<script type="text/javascript" src="{$templatePath}js/homey.js"></script>
+</body>
+</html>

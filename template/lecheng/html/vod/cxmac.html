@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{include file="lecheng/html/seo/vod_show"}
+	{include file="lecheng/html/block/include"}
+</head>
+<body>
+{include file="lecheng/html/block/head"}
+<div class="container">
+	<div class="row">
+		<div class="stui-pannel stui-pannel-bg clearfix">
+			<div class="stui-pannel-box">
+				<div class="stui-pannel_hd">
+					<div class="stui-pannel__head active bottom-line clearfix">
+						<h3 class="title">
+							<img src="{$templatePath}icon/icon_27.png"/>
+							尝鲜电影
+						</h3>
+					</div>
+					<!-- 筛选 -->
+					<ul class="stui-screen__list type-slide bottom-line-dot clearfix typeType">
+						<li>
+							<span class="text-muted">按类型</span>
+						</li>
+
+
+						<li {if $typeId eq ""} class="active" {/if} data-cat=""><a class="catType" href="javascript:;" data-cat="">全部</a></li>
+						{notempty name="$typeData"}
+						{foreach $typeData as $k=>$v}
+						{if $k>3}
+							{if $v.type_name neq '展会美女' && $v.type_name neq 'VIP福利' && $v.type_name neq '写真美女' && $v.type_name neq '韩国美女' && $v.type_name neq '主播美女' && $v.type_name neq '美女写真' && $v.type_name neq '伦理片' && $v.type_name neq '福利' && $v.type_name neq '伦理' && $v.type_name neq '写真视频' && $v.type_name neq '韩国主播VIP视频' && $v.type_name neq '福利片' && $v.type_name neq '资讯'}
+								<li {if $typeId eq $v['type_id']} class="active" {/if} data-cat="{$v['type_id']}"><a href="javascript:;" class="text-muted catType" data-cat="{$v['type_id']}">{$v['type_name']}</a></li>
+							{/if}
+						{/if}
+						{/foreach}
+						{/notempty}
+					</ul>
+
+					<!-- end 筛选 -->
+				</div>
+				<div class="stui-pannel_bd">
+					<ul class="stui-vodlist clearfix">
+
+						{notempty name="$listData"}
+						{foreach $listData as $kk=>$vv}
+
+						<li class="col-md-7 col-sm-4 col-xs-3">
+							<div class="stui-vodlist__box stui-vodlist__bg">
+								<a  style="border-radius: 8px" class="stui-vodlist__thumb lazyload" href="/index/play/cxplay?&url={$vv.vod_id|base64_encode}" title="{$vv.vod_name}" data-original="{$vv.vod_pic}">
+									<span class="play hidden-xs"></span>
+									<span class="pic-text text-right">{$vv.vod_remarks}</span>
+								</a>
+								<div class="stui-vodlist__detail active">
+									<h4 class="title text-overflow"><a href="/index/play/cxplay/url/{$vv.vod_id|base64_encode}.html" title="{$vv.vod_name}">{$vv.vod_name}</a></h4>
+									<p class="text text-overflow text-muted hidden-xs">{$vv.vod_actor|default='内详'}</p>
+								</div>
+							</div><!-- 列表-->
+						</li>
+
+						{/foreach}
+						{/notempty}
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		{include file="lecheng/html/block/cxpage"}<!-- 翻页-->
+	</div>
+</div>
+{include file="lecheng/html/block/foot"}
+</body>
+</html>

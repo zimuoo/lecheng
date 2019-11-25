@@ -1,0 +1,45 @@
+<div class="stui-pannel stui-pannel-bg clearfix">	
+	<div class="stui-pannel-box clearfix">	
+		<div class="stui-pannel_hd">
+			<div class="stui-pannel__head active bottom-line clearfix">
+				<h3 class="title">
+					<img src="{$templatePath}icon/icon_12.png"/>
+					热播推荐
+				</h3>
+				<ul class="nav nav-text pull-right">
+
+                    <li><span class="split-line"></span><a href="/index/type/index/vodType/1.html" class="text-muted">更多</a></li>
+
+				</ul>
+			</div>																		
+		</div>
+
+		<div class="stui-pannel_bd clearfix">
+			<ul class="stui-vodlist clearfix">
+
+				{foreach $retui as $key=>$v}
+				<?php if($isMb){ $flg=4; }else{ $flg=15; };?>
+					{if $key<$flg}
+						<li class="{if condition="$key eq 0"}col-lg-3{else /}col-lg-6{/if} col-md-4 col-sm-3 col-xs-2{if condition="$key gt 8"} hidden-md hidden-xs{/if}">
+							<div class="stui-vodlist__box stui-vodlist__bg">
+								<a  style="border-radius: 8px" class="stui-vodlist__thumb active lazyload" href="/index/play/play/wd/{$v.title}/url/{$v.coverpage|base64_encode}.html" title="{$v.title}" data-original="{$v.cover}">
+									<span class="play hidden-xs"></span>
+									<span class="pic-text text-right">{$v.tag}</span>
+								</a>
+								<div class="stui-vodlist__detail active">
+									<h4 class="title text-overflow"><a href="/index/play/play/wd/{$v.title}/url/{$v.coverpage|base64_encode}.html" title="{$v.title}">{$v.title}</a></h4>
+									{if condition="$key eq 0"}
+										<p class="text text-overflow visible-lg"><span class="text-muted">主演：</span>{$v.desc|default='内详'}</p>
+										<p class="text text-overflow visible-lg"><span class="text-muted">导演：</span>未知</p>
+									{/if}
+								</div>
+							</div>
+						</li>
+				{/if}
+
+				{/foreach}
+			</ul>																							
+		</div>
+
+	</div>
+</div>

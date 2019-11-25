@@ -1,0 +1,135 @@
+{notempty name="$playData.playData"}
+{foreach $playData.playData as $k=>$v}
+<div class="stui-pannel stui-pannel-bg clearfix">
+	<div class="stui-pannel-box b playlist mb">
+		<div class="stui-pannel_hd">
+			<div class="stui-pannel__head bottom-line active clearfix">
+				<span class="more text-muted pull-right">无需安装任何插件，即可快速播放</span>
+				<h3 class="title">
+					{$v.playType}
+				</h3>						
+			</div>																		
+		</div>
+		<div class="stui-pannel_bd col-pd clearfix">
+			<ul id="playUrlList" class="stui-content__playlist column8 clearfix playUrlList">
+				
+                
+					{if $isZY eq 1}
+					
+					{foreach $v.zongyi as $kk=>$vv}
+					<li {if $kk eq 0 && $k eq 0}class="active"{/if}>
+						<a href="javascript:;" data-href="{$vv.url}" data-ji="{$kk+1}" onclick="bofang(this)">{$vv.qishu}</a>
+					</li>
+					{/foreach}
+					
+					
+					{else}
+					
+					
+					{foreach $v.urlData as $kk=>$vv}
+					<li {if $kk eq 0 && $k eq 0}class="active"{/if}>
+						<a href="javascript:;" data-href="{$vv.lianjie}" data-ji="{$kk+1}" onclick="bofang(this)">第{$kk+1}集</a>
+					</li>
+					{/foreach}
+					
+					
+					{/if}
+					
+				
+                 
+			</ul>
+		</div>
+	</div>
+</div>
+{/foreach}
+{/notempty}
+<div class="stui-pannel_hd">
+	<div class="stui-pannel__head active bottom-line clearfix">
+		<h3 class="title">
+			<img src="{$templatePath}icon/icon_12.png"/>
+			剧情简介
+		</h3>
+	</div>
+</div>
+<!-- 详细信息-->
+<div class="stui-pannel stui-pannel-bg clearfix">
+	<div class="stui-pannel-box">
+		<div class="stui-content__thumb">
+			<a class="stui-vodlist__thumb picture v-thumb" href="" title="{$dyName|raw}">
+				<img class="lazyload" src="{$playData.other.vod_pic|default=''}" data-original="{$playData.other.vod_pic|default=''}"/>
+				<span class="play active hidden-xs"></span>
+				<span class="pic-text text-right"></span>
+			</a>
+		</div>
+		<div class="stui-content__detail">
+			<h1 class="title">{$dyName}<span class="score text-red">{$playData.other.vod_score|default='9.8'}</span></h1>
+			<p class="data">
+				<span class="text-muted">类型：</span>{$playData.other.list_name|default='未知'}
+				<span class="split-line"></span>
+				<span class="text-muted hidden-xs">地区：</span>{$playData.other.vod_area|default='未知'}
+				<span class="split-line"></span>
+				<span class="text-muted hidden-xs">年份：</span>{$playData.other.vod_year|default=''}
+			</p>
+			<p class="data"><span class="text-muted">主演：</span>{$playData.other.vod_actor|default=''}</p>
+			<p class="data"><span class="text-muted">导演：</span>{$playData.other.vod_director|default=''}</p>
+			<p class="data hidden-sm"><span class="text-muted">更新：</span>{$playData.other.vod_addtime|default=''}</p>
+			<p class="desc detail hidden-xs">
+				<span class="left text-muted">简介：</span>
+				<span class="detail-sketch">{$playData.other.vod_content|raw|mb_substr=0,100|default=""}</span>
+				<span class="detail-content" style="display: none;">{$playData.other.vod_content|raw|default=""}</span>
+				<a class="detail-more" href="javascript:;">详情 <i class="icon iconfont icon-moreunfold"></i></a>
+			</p>
+			<!--<div class="play-btn clearfix">-->
+				<!--<div class="share bdsharebuttonbox hidden-sm hidden-xs pull-right"></div>-->
+				<!--<a class="btn btn-primary" href="">立即播放</a>-->
+			<!--</div>-->
+		</div>
+		{if $isMb}
+		<div class="stui-pannel_hd">
+			
+		</div>
+		<div class="stui-content__detail">
+			<p class="data"><span class="text-muted">剧情简介：</span>{$playData.other.vod_content|raw|mb_substr=0,100|default=""}...</p>
+		</div>
+		{/if}
+			
+	</div>
+</div>
+<!-- end 详细信息-->
+
+<script>
+
+	function bofang(obj) {
+		var href = $(obj).attr('data-href');
+		var ji = $(obj).attr('data-ji');
+		$('ul li').removeClass('active')
+		$(obj).parent().addClass('active');
+		//$(obj).parent().siblings().removeClass('active');
+		var isyun="{$isYunBo}"
+		var yunbokaiguan="{$systemConfig.yun_bo_jx_switch}"
+		if(isyun==1 && yunbokaiguan==1){
+			var jiekou = "{$systemConfig.vod_jx_yunbo_url|raw}";
+		}else{
+			var jiekou = "{$systemConfig.vod_jx_url|raw}";
+		}
+		
+		
+		if (href != '' || href != null) {
+			
+				$('#video').attr('src', jiekou + href);
+			}
+	}
+
+	$(function () {
+		$('#btn-prev').click(function () {
+			$(".playUrlList li[class='active']").prev().children('a:eq(0)').click();
+		})//上一集
+		$('#btn-next').click(function () {
+			$(".playUrlList li[class='active']").next().children('a:eq(0)').click();
+		})//上一集
+	})
+	function shuaxin(){
+		window.location.reload();
+	}
+</script>
+

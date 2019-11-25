@@ -1,0 +1,157 @@
+@charset"UTF-8";
+@import url("//at.alicdn.com/t/font_534886_szv17h3aqlkawcdi.css");
+@import url("//at.alicdn.com/t/font_563548_zgdzqqdmmwdk7qfr.css");
+/* icon加载 */
+
+
+/*底部导航*/
+.mnav {
+    position:fixed;
+    bottom:0;
+    z-index:999;
+    width:100%;
+    background:#fff;
+    table-layout:fixed;
+    height:auto
+}
+.mnav a {
+    position:relative;
+    display:table-cell;
+    padding:.1rem 0 0;
+    width:1%;
+    vertical-align:middle;
+    text-align:center
+}
+.mnav a .iconfont {
+    font-size:.5rem
+}
+.mnav a p {
+    font-size:.25rem;
+    line-height:normal;
+    padding:.08rem 0 0 0
+}
+.mnav .active {
+    background-image:-webkit-gradient(linear, 0 0, 0 bottom, from(#fa6567), to(#fa8587));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent
+}
+
+
+/*========================================================================*/
+/*AMQ--Joeleo MT 视频布局
+/*========================================================================*/
+/* 列表头部 */
+.mod-head {
+    position:relative;
+    height:1.1rem;
+    line-height:1.1rem;
+    background-color:#FFF;
+    font-size:.3rem
+}
+.mod-head .mod-head-title {
+    float:left;
+    text-indent:.2rem
+}
+.mod-head .mod-head-title .mod-head-name {
+    float:left;
+    font-size:.32rem;
+    font-weight:400
+}
+/*  查看更多 */
+.mod-head .change {
+    position:absolute;
+    display:block;
+    right:10px;
+    top:0;
+    color:#ffb90f;
+    font-size:.26rem;
+    line-height:1.1rem
+}
+.mod-head .change .iconfont {
+    font-size:.26rem;
+    color:#ffb90f;
+    line-height:.88rem
+}
+
+
+
+/*TV布局*/
+.mainmenu:after {
+    clear:both;
+    content:" ";
+    display:block
+}
+.mainmenu li {
+    float:left;
+    margin-left:2.5%;
+    margin-top:2.5%;
+    width:30%;
+    height:1.5rem;
+    border-radius:.15rem;
+    box-shadow: 4px 4px 15px #999;
+    overflow:hidden
+}
+.mainmenu li a {
+    display:block;
+    color:#FFF;
+    text-align:center
+}
+.mainmenu li a b {
+    display:block;
+    height:2rem
+}
+.mainmenu li a img {
+    width: 100%;
+    height: 1.02rem;
+}
+.mainmenu li a span {
+    display:block;
+    height:.5rem;
+    line-height:.5rem;
+    background-color:#f0f0f0;
+    color:#999;
+    font-size:.25rem;
+    margin-top:-0.85rem
+}
+.mainmenu li:nth-child(8n+1) {
+    background-color:#ffe7ba
+}
+.mainmenu li:nth-child(8n+2) {
+    background-color:#ffe4c4
+}
+.mainmenu li:nth-child(8n+3) {
+    background-color:#ffd39b
+}
+.mainmenu li:nth-child(8n+4) {
+    background-color:#e9967a
+}
+.mainmenu li:nth-child(8n+5) {
+    background-color:#bcee68
+}
+.mainmenu li:nth-child(8n+6) {
+    background-color:#bcd2ee
+}
+.mainmenu li:nth-child(8n+7) {
+    background-color:#b4eeb4
+}
+.mainmenu li:nth-child(8n+8) {
+    background-color:#faebd7
+}
+.mainmenu li:nth-child(8n+9) {
+    background-color:#bfefff
+}
+.mainmenu li:nth-child(8n+10) {
+    background-color:#e5e5e5
+}
+.mainmenu li:nth-child(8n+11) {
+    background-color:#e0ffff
+}
+.mainmenu li:nth-child(8n+12) {
+    background-color:#ee6a50
+}
+.mainmenu li:nth-child(8n+13) {
+    background-color:#ffc1c1
+}
+.mainmenu li:nth-child(8n+14) {
+    background-color:#fffacd
+}

@@ -1,0 +1,23 @@
+<div class="stui-pannel stui-pannel-bg hidden-sm hidden-xs clearfix">
+	<div class="stui-pannel-box">
+		<div class="stui-pannel_hd">
+			<div class="stui-pannel__head active bottom-line clearfix">                                                                                                                                                                                                                                                       
+				<h3 class="title">
+					<img src="{$templatePath}/icon/icon_26.png"/>
+					友情链接
+				</h3>								
+			</div>																		
+		</div>
+		<div class="stui-pannel_bd clearfix">
+			<div class="col-xs-1">
+				<ul class="stui-link__text clearfix">
+					{notempty name="$linkData"}
+					{foreach $linkData as $vv}
+					<li><a class="text-muted" href="{$vv.url}" title="{$vv.title}" target="_blank">{$vv.title}</a></li>								
+					{/foreach}
+					{/notempty}
+				</ul>								
+			</div>																		
+		</div>
+	</div>
+</div>

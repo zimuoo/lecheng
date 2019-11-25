@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+<title>高清直播 - {$systemConfig.title|default=''}</title>
+
+	<style type="text/css">
+		.stui-header__top{ background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);}
+		.stui-header__top.headroom--not-top{ background: #292838;}
+	</style>
+
+	
+<link rel="stylesheet" href="{$templatePath}css/Joe-red.css" />
+
+{include file="lecheng/html/block/include"}
+
+<link rel="stylesheet" href="{$templatePath}css/app.css" />
+<link rel="stylesheet" href="{$templatePath}css/aui.css" />
+
+<script type="text/javascript" src="{$templatePath}js/jquery.min.js"></script>
+<script type="text/javascript" src="{$templatePath}js/leeleo.js" ></script>
+
+
+</head>
+<body style="padding: 0;">
+	{include file="lecheng/html/block/head"}
+
+<div class="channel" style="margin-top: 0.7rem;margin-bottom: 1rem">
+
+
+{foreach $data as $k=>$v}
+		<section class="mod">
+			<div class="mod-head clearfix">
+				<div class="mod-head-title">
+					<span class="mod-head-name">
+					{if $k eq 'mx'}
+						明星频道
+						{elseif $k eq 'zj'}
+						专辑频道
+						{elseif $k eq 'tv'}
+						央视频道
+						{elseif $k eq 'ws'}
+						卫视频道
+						{/if}
+
+					</span>
+				</div>
+				<a data-src="{$systemConfig.vod_jx_url}" class="change">
+				<span class="iconfont icon-location"></span>&nbsp好看的直播&nbsp</a>
+			</div>
+			<div class="mod-main clearfix">
+				<div class="mod-row">
+					<ul class="mainmenu" tapmode>
+
+				{foreach $v as $kk=>$vv}
+					<li><a data-src="{$systemConfig.vod_jx_url}{$vv.url|default=''}" href="javascript:;" ><b>
+						{if $k eq 'ws' || $k eq 'tv'}
+						<img src="{$templatePath}{$vv.img|default=''}" />
+						{else}
+						<img src="{$vv.img|default=''}" />
+						{/if}
+						</b><span style="margin-top: -0.95rem;">{$vv.title|default=''}</span></a></li>
+				{/foreach}
+
+					
+					</ul></br>
+				</div>
+			</div>
+		</section>
+{/foreach}
+
+	
+
+</div>
+<!-- 播放faream -->
+				<div class="zb-plays">
+					<div class="zb-play"><!-- <a href="javascript:;" class="close">关闭</a> -->
+						<div class="ipcon" id="ipcon">
+						<iframe id="frmLive" frameborder="0" width="100%" src=""></iframe>
+						</div>
+					</div>
+    			</div>
+    			<style type="text/css">
+    				
+    				.zb-plays .close {
+					    left: 91%;
+					    width: 30px;
+					    font-size: 0.5rem;
+					    height: 30px;
+					    border-radius: 50%;
+					        z-index: 9999;
+					    position: absolute;
+					    top: -19px;
+					    left: 100%;
+					    display: block;
+					    padding: 8px 0 1pc;
+					    width: 70px;
+					    background-color: #ff9900;
+					    color: #fff;
+					    text-align: center;
+					    font-size: 2.5rem;
+					    opacity: .85;}
+					    #footer ul a{
+    					font-size: 0.28rem;}
+    			</style>
+
+</body>
+
+		<script>
+				var abtn = $('.mainmenu li a');
+				
+				abtn.on('click', function(e) {
+				var vurl = $(this).attr("data-src");
+				console.log(vurl)
+				var w = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
+				$('#frmLive').attr('src', vurl);
+				if (w < 767) {
+				$('#frmLive').height = 260;
+				} else {
+				$('#frmLive').height = 600;
+				};
+				$('html').addClass('show');
+				e.stopPropagation();
+				});
+
+
+				$('.zb-plays').on('click', function() {
+				$('html').removeClass('show');
+				document.getElementById('frmLive').src = '';
+				})
+			
+		</script>
+{include file="lecheng/html/block/foot"}
+
+
+</html>

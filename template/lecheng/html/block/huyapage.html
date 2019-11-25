@@ -1,0 +1,67 @@
+
+<ul class="stui-page text-center clearfix">
+	<li><a class="shouye" href="javascript:;">首页</a></li>
+	<li><a class="upye" href="javascript:;">上一页</a></li>
+	{for start="1" end="{$totalPages}"}
+	<li class="hidden-xs {if $i eq $page}active{/if}"><a href="javascript:;">{$i}</a></li>
+	{/for}
+	<li id="page" class="active visible-xs"><span class="num">{$page}</span></li>
+	<li><a class="nextye" href="javascript:;">下一页</a></li>
+	<li><a class="weiye" href="javascript:;">尾页</a></li>
+</ul>
+
+
+
+<script>
+	var nowPage="{$page}";
+	var totalPage="{$totalPages}";
+	$('.huType li').click(function(){
+	//	$('.huType li').removeClass('active');
+		$(this).siblings().removeClass('active');
+		$(this).addClass('active');
+		var cat=$(this).attr('data-cid');
+	//	console.log(cat);  return    false;
+
+		window.location.href="/index/type/huya/cid/"+cat+".html"
+	});
+
+
+	/************分页********/
+	$('.shouye').click(function(){
+		var catpage=$(".huType li[class='active']").attr('data-cid');
+
+		window.location.href="/index/type/huya/cid/"+catpage+".html"
+	});
+
+	$('.upye').click(function(){
+		if(nowPage==1){
+			return false;
+		}
+		var catup=$(".huType li[class='active']").attr('data-cid');
+
+		var pageup=nowPage-1;
+		window.location.href="/index/type/huya/cid/"+catup+"/page/"+pageup+".html";
+
+	})
+
+	$('.nextye').click(function(){
+		if(nowPage==totalPage){
+			return false;
+		}
+		var catnex=$(".huType li[class='active']").attr('data-cid');
+
+		var pagenex=parseInt(nowPage)+1;
+		window.location.href="/index/type/huya/cid/"+catnex+"/page/"+pagenex+".html";
+	})
+	$('.weiye').click(function(){
+		if(nowPage==totalPage){
+			return false;
+		}
+		var catw=$(".huType li[class='active']").attr('data-cid');
+
+		var pagew=totalPage;
+		window.location.href="/index/type/huya/cid/"+catw+"/page/"+pagew+".html";
+	})
+</script>
+
+

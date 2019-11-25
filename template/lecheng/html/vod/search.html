@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="lecheng/html/seo/vod_search"}   
+	{include file="lecheng/html/block/include"}
+</head>
+<body>
+	{include file="lecheng/html/block/head"}
+    <div class="container">
+        <div class="row">
+        	<div class="col-lg-wide-75 col-xs-1 padding-0">	
+			   	<div class="stui-pannel stui-pannel-bg clearfix">
+					<div class="stui-pannel-box">
+
+
+
+						<div class="stui-pannel_hd">
+							<div class="stui-pannel__head active bottom-line clearfix">	
+								<h3 class="title">
+									<img src="{$templatePath}icon/icon_27.png"/>
+									<span style="color: #FF00FF;">全网影视</span>：{$dyName}
+								</h3>
+							</div>																		
+						</div>
+						<div class="stui-pannel_bd clearfix">
+							<ul class="stui-vodlist__media col-pd clearfix">
+								<!-- 列表 -->
+								
+						{notempty name="$data['quanData']"}
+							{foreach $data['quanData'] as $key=>$v}
+								<li class="active {if condition="$key gt 1"}top-line-dot{/if} clearfix">
+									<div class="thumb">									
+										<a class="v-thumb stui-vodlist__thumb lazyload" href="/index/play/play?wd={$v.title}&url={$v.url|base64_encode}" title="{$v.title}" data-original="{$v.pic}">
+											<span class="play hidden-xs"></span>
+											<span class="pic-text text-right"></span>
+										</a>																												
+									</div>
+									<div class="detail">
+										<h3 class="title"><a href="/index/play/play?wd={$v.title}&url={$v.url|base64_encode}">{$v.title}</a></h3>
+										<p class="margin-0 hidden-smss hidden-xss"></p>
+											<div class="m-description">
+												<div class="m-description">
+													<span class="text-muted">简&nbsp;&nbsp;介&nbsp;：</span>{$v.desc|mb_substr=0,100}。。。
+												</div>
+											</div>
+											<p></p>
+											<p class="margin-0 hidden-smss hidden-xss"><a class="text-muted" href="/index/play/play?wd={$v.title}&url={$v.url|base64_encode}">查看详情</a></p>
+									</div>
+								</li>
+							{/foreach}
+							{/notempty}
+								<!-- end 列表 -->
+						
+							</ul>					
+						</div>
+
+
+<!-- 资源站搜索 -->
+
+						<div class="stui-pannel_hd">
+							<div class="stui-pannel__head active bottom-line clearfix">	
+								<h3 class="title">
+									<img src="{$templatePath}icon/icon_27.png"/>
+									<span style="color: #FF00FF;">资源站</span>：{$dyName}
+								</h3>
+							</div>																		
+						</div>
+						<div class="stui-pannel_bd clearfix">
+							<ul class="stui-vodlist__media col-pd clearfix">
+								<!-- 列表 -->
+								
+							{notempty name="$data['zyData']"}
+							{foreach $data['zyData'] as $key=>$vv}
+
+							{if $vv.list_name neq '美女写真' && $vv.list_name neq '伦理片' && $vv.list_name neq '福利' && $vv.list_name neq '伦理' && $vv.list_name neq '写真视频' && $vv.list_name neq '韩国主播VIP视频' && $vv.list_name neq '福利片' && $vv.list_name neq '韩国美女' }
+								<li class="active {if condition="$key gt 1"}top-line-dot{/if} clearfix">
+									<div class="thumb">									
+										<a class="v-thumb stui-vodlist__thumb lazyload" href="/index/play/index?&url={$vv.vod_id|base64_encode}" title="{$v.title}" data-original="{$vv.vod_pic}">
+											<span class="play hidden-xs"></span>
+											<span class="pic-text text-right"></span>
+										</a>																												
+									</div>
+									<div class="detail">
+										<h3 class="title"><a href="/index/play/index?&url={$vv.vod_id|base64_encode}">{$vv.vod_name}</a></h3>
+										<p class="margin-0 hidden-smss hidden-xss"></p>
+											<div class="m-description">
+												<div class="m-description">
+													<span class="text-muted">简&nbsp;&nbsp;介&nbsp;：</span>{$vv.vod_content|mb_substr=0,40|default=''}。。。
+												</div>
+											</div>
+											<p></p>
+											<p class="margin-0 hidden-smss hidden-xss"><a class="text-muted" href="/index/play/index?&url={$vv.vod_id|base64_encode}">查看详情</a></p>
+									</div>
+								</li>
+								{/if}
+							{/foreach}
+							{/notempty}
+								<!-- end 列表 -->
+							
+							</ul>					
+						</div>
+
+					</div>				
+				</div>	            
+
+			</div>
+			
+        </div>
+    </div>
+	{include file="lecheng/html/block/foot"}
+</body>
+</html>

@@ -1,0 +1,349 @@
+{include file="admin/common/head"/}
+<div class="admin-main layui-anim layui-anim-upbit">
+    <fieldset class="layui-elem-field layui-field-title">
+        <legend>{:lang('systemSet')}</legend>
+    </fieldset>
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基础设置</li>
+            <li>影视管理</li>
+            <li>开关</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane" lay-filter="form-system">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">{:lang('websiteName')}</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="name" lay-verify="required" placeholder="{:lang('pleaseEnter')}{:lang('websiteName')}" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">{:lang('WebsiteUrl')}</label>
+                        <div class="layui-input-4">
+                            <input type="text" name="domain" lay-verify="url" placeholder="{:lang('pleaseEnter')}{:lang('WebsiteUrl')}" class="layui-input">
+                        </div>
+                    </div>
+                    <!--<div class="layui-form-item">-->
+                    <!--    <label class="layui-form-label">网站LOGO</label>-->
+                    <!--    <input type="hidden" name="logo" id="logo">-->
+                    <!--    <div class="layui-input-block">-->
+                    <!--        <div class="layui-upload">-->
+                    <!--            <button type="button" class="layui-btn layui-btn-primary" id="logoBtn"><i class="icon icon-upload3"></i>点击上传</button>-->
+                    <!--            <div class="layui-upload-list">-->
+                    <!--                <img class="layui-upload-img" id="cltLogo">-->
+                    <!--                <p id="demoText"></p>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">{:lang('recordNum')}</label>
+                        <div class="layui-input-3">
+                            <input type="text" name="bah" placeholder="{:lang('pleaseEnter')}{:lang('recordNum')}" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">Copyright</label>
+                        <div class="layui-input-3">
+                            <input type="text" name="copyright" placeholder="{:lang('pleaseEnter')}Copyright" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">{:lang('companyAddress')}</label>
+                        <div class="layui-input-3">
+                            <input type="text" name="ads" placeholder="{:lang('pleaseEnter')}{:lang('companyAddress')}" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">{:lang('tel')}</label>
+                        <div class="layui-input-3">
+                            <input type="text" name="tel" placeholder="{:lang('pleaseEnter')}{:lang('tel')}" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">{:lang('email')}</label>
+                        <div class="layui-input-3">
+                            <input type="text" name="email" placeholder="{:lang('pleaseEnter')}{:lang('email')}" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" lay-submit="" lay-filter="sys">{:lang('submit')}</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">{:lang('reset')}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item">
+                <form class="layui-form layui-form-pane" lay-filter="form-system">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">{:lang('seoTitle')}</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="title" lay-verify="required" placeholder="{:lang('pleaseEnter')}{:lang('WebsiteUrl')}" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">{:lang('seoKeyword')}</label>
+                        <div class="layui-input-block">
+                            <textarea name="key" lay-verify="required" placeholder="{:lang('pleaseEnter')}{:lang('seoKeyword')}" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">{:lang('description')}</label>
+                        <div class="layui-input-block">
+                            <textarea name="des" lay-verify="required" placeholder="{:lang('pleaseEnter')}{:lang('description')}" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">公告</label>
+                        <div class="layui-input-block">
+                            <textarea name="vod_note" lay-verify="required" placeholder="填写公告" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!--  模板选折-->
+                    
+                    
+                    <div class="layui-form-item">
+			            <label class="layui-form-label">模板管理</label>
+			            <div class="layui-input-3">
+			                <select name="vod_template" lay-verify="required" lay-filter="moduleid">
+			                    {volist name="list" id="vo"}
+			                    
+			                    <option value="{$vo}" {if condition="$vo eq $template"}selected{/if}>{$vo}</option>
+			                    
+			                    {/volist}
+			                </select>
+			            </div>
+			        </div>
+			        
+			         <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="APP下载地址">APP下载地址</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="app_down_url" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="数据缓存时间">数据缓存时间</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_cache_time" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="资源站类型">资源站类型</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="ziyuan_type" value="1" title="普通JSON资源站">
+                            <input type="radio" name="ziyuan_type" value="2" title="苹果V10JSON资源站">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="尝鲜资源">尝鲜资源</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_zy_list" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="V10尝鲜资源">V10尝鲜资源</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_zy_macv10" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    
+                     <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="视频解析地址">视频解析地址</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_jx_url" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="云播解析地址">云播解析地址</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_jx_yunbo_url" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                  <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="普通云播资源">普通云播资源</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_yun_config" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="v10云播资源">v10云播资源</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_yun_macv10_list" lay-verify="required" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="底漂广告">底漂广告</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_ad_dibu" lay-verify="" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="横幅广告">横幅广告</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_ad_hengfu" lay-verify="" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                     <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="统计代码">统计代码</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_tongji" lay-verify="" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="大淘客地址">大淘客地址</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="taobaoke_config" lay-verify="" placeholder="" class="layui-input">
+                        </div>
+                    </div>
+                     <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="公告背景色">公告背景色</label>
+                        <div class="layui-input-4">
+                            <input type="text"name="vod_note_color" lay-verify="" placeholder="" class="layui-input">
+                        </div>
+                	<div class="layui-form-mid layui-word-aux">#6b717d雅灰  #fd4964桃红  #ffac42橘黄  #cca33a土黄  #9f6f59咖啡  #785b87烟紫  #397dba海蓝  #03937a青绿</div>
+                    </div>
+                    
+                    
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" lay-submit="" lay-filter="sys">{:lang('submit')}</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">{:lang('reset')}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="layui-tab-item">
+                <form class="layui-form layui-form-pane" lay-filter="form-system">
+                    <!--<div class="layui-form-item">-->
+                    <!--    <label class="layui-form-label">手机端</label>-->
+                    <!--    <div class="layui-input-block">-->
+                    <!--        <input type="radio" name="mobile" value="open" title="开启">-->
+                    <!--        <input type="radio" name="mobile" value="close" title="关闭">-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="公告开关">公告开关</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="vod_gonggao_switch" value="1" title="开启">
+                            <input type="radio" name="vod_gonggao_switch" value="2" title="关闭">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="云播开关">云播开关</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="vod_yunplay_switch" value="1" title="开启">
+                            <input type="radio" name="vod_yunplay_switch" value="2" title="关闭">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="全网视频开关">全网视频开关</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="vod_quan_switch" value="1" title="开启">
+                            <input type="radio" name="vod_quan_switch" value="2" title="关闭">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="微信QQ防屏蔽开关">微信QQ防屏蔽开关</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="wechat_qq_open_close" value="1" title="开启">
+                            <input type="radio" name="wechat_qq_open_close" value="0" title="关闭">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="云播解析开关">云播解析开关</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="yun_bo_jx_switch" value="1" title="开启">
+                            <input type="radio" name="yun_bo_jx_switch" value="0" title="关闭">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="max-width: 155px;cursor:pointer" title="验证码开关">验证码开关</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="code" value="open" title="开启">
+                            <input type="radio" name="code" value="close" title="关闭">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" lay-submit="" lay-filter="sys">{:lang('submit')}</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">{:lang('reset')}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{include file="admin/common/foot"/}
+<script>
+    layui.use(['form', 'layer','upload','element'], function () {
+        var form = layui.form,layer = layui.layer,upload = layui.upload,$ = layui.jquery,element = layui.element;
+        var seytem = {$system|raw};
+        form.val("form-system", seytem);
+        $('#cltLogo').attr('src',seytem.logo);
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#logoBtn'
+            ,url: '{:url("UpFiles/upload")}'
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#cltLogo').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                //上传成功
+                if(res.code>0){
+                    $('#logo').val(res.url);
+                }else{
+                    //如果上传失败
+                    return layer.msg('上传失败');
+                }
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+        //提交监听
+        form.on('submit(sys)', function (data) {
+            loading =layer.load(1, {shade: [0.1,'#fff']});
+            $.post("{:url('system/system')}",data.field,function(res){
+                layer.close(loading);
+                if(res.code > 0){
+                    layer.msg(res.msg,{icon: 1, time: 1000},function(){
+                        location.href = res.url;
+                    });
+                }else{
+                    layer.msg(res.msg,{icon: 2, time: 1000});
+                }
+            });
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="lecheng/html/seo/bookkan"}
+
+	<script src="/static/layui/layui.all.js"></script>
+	<link rel="stylesheet" href="/static/layui/css/layui.css">
+
+	{include file="lecheng/html/block/include"}
+
+</head>
+<body style="background-color: #f7f0e5;" class="">
+	{include file="lecheng/html/block/head"}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-wide-75 col-xs-1 xsContent" style="line-height: 0.7rem;padding-left: 1rem;padding-right: 1rem;padding-top: 1rem">
+           
+				{$data.content|raw|htmlspecialchars_decode|default=''}
+            	
+				<div class="stui-pannel_bd col-pd clearfix">
+					<ul id="playUrlList" class="stui-content__playlist column8 clearfix">
+						<li>
+							<a  class='zz' style="border:1px solid #9c9e67" href="/index/index/bookDetail/bId/{$bId}.html" >首页</a>
+						</li>
+		                <li>
+							<a class='zz' style="border:1px solid #9c9e67" href="javascript:;"  onclick="upye()">上一章</a>
+						</li>
+		                 <li>
+							<a  class='zz' style="border:1px solid #9c9e67" href="javascript:;"  onclick="nextye()">下一章</a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+        </div>
+    </div>
+  
+    
+
+	<ul class="stui-extra clearfix">
+		<li>
+			<a class="backtop" href="javascript:scroll(0,0)" style="display: none;"><i class="icon iconfont icon-less"></i></a>
+		</li>
+		<li>
+			<a class="backtops" onclick="upye()" href="javascript:;" style="display: block;font-size: 7px;background-color: rgba(0,0,0,0.6);
+    color: #FFFFFF;">上一章</a>
+		</li>
+		<li>
+			<a class="backtops" onclick="nextye()" href="javascript:;" style="display: block;font-size: 7px;background-color: rgba(0,0,0,0.6);
+    color: #FFFFFF;">下一章</a>
+		</li>
+		
+		<li class="visible-xs" style="opacity:0.6;">
+			<a class="mulv" href="javascript:;"><i class="icon iconfont icon-viewlist"></i></a>
+		</li>
+		<li class="visible-xs" style="opacity:0.6;">
+			<a class="seting" href="javascript:;"><i class="icon iconfont icon-set"></i></a>
+		</li>
+		<li class="hidden-xs" style="opacity:0.6;">
+			<a class="mulv" href="javascript:;"><i class="icon iconfont icon-viewlist"></i></a>
+		</li>
+		<li class="hidden-xs" style="opacity:0.6;">
+			<a class="seting" href="javascript:;"><i class="icon iconfont icon-set"></i></a>
+		</li>
+		<!--<li class="hidden-xs">-->
+		<!--	<span><i class="icon iconfont icon-qrcode"></i></span>-->
+		<!--	<div class="sideslip">-->
+		<!--		<div class="col-pd text-center">-->
+		<!--			<p><img class="qrcode" width="150" height="150" /></p>-->
+		<!--			<p class="margin-0">扫码用手机访问</p>-->
+		<!--		</div>			-->
+		<!--	</div>-->
+		<!--</li>-->
+		<!--<li>-->
+		<!--	<a class="backtop" href=""><i class="icon iconfont icon-comments"></i></a>-->
+		<!--</li>-->
+	</ul>
+	
+	  <script>
+
+	  	
+	  	
+	  </script>
+	
+	<!--弹出框-->
+<style>
+		.popWarp .cabBtnWarp {
+			width: 8.6rem;
+			margin: 0 auto;
+			padding: 0.46rem 0px;
+			overflow: hidden;
+			margin-top: -1rem;
+		}
+		.popWarp .cabBtnWarp a {
+			margin-bottom: 0.6rem;
+			display: block;
+			width: 4rem;
+			height: 1.4rem;
+			line-height: 1.4rem;
+			text-align: center;
+			font-size: 0.56rem;
+			-webkit-border-radius: 1rem;
+			-moz-border-radius: 1rem;
+			border-radius: 1rem;
+			color: #ffffff;
+			background: #566ffe;
+		}
+		.popWarp .cabBtnWarp a:nth-child(2n+1) {
+			float: left;
+		}
+		.popWarp .cabBtnWarp a:nth-child(2n+2) {
+			float: right;
+		}
+
+		.popLayer {
+			position: fixed;
+			top: 0px;
+			bottom: 0px;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 99999999999;
+			display: -webkit-flex;
+			-webkit-justify-content: center;
+			-webkit-align-items: center;
+		}
+		.popLayer .popWarp {
+			width: 11.6rem;
+			background: #fff;
+			-webkit-border-radius: 0.16rem;
+			-moz-border-radius: 0.16rem;
+			border-radius: 0.16rem;
+			padding: 0rem 0.8rem;
+		}
+		.popLayer .tip {
+			line-height: 1.12rem;
+			font-size: 0.68rem;
+			color: #666666;
+			text-align: left;
+		}
+		
+		
+		.popWarps .cabBtnWarps {
+			width: 8.6rem;
+			margin: 0 auto;
+			padding: 0.46rem 0px;
+			overflow: hidden;
+			margin-top: -1rem;
+		}
+		.popWarps .cabBtnWarps a {
+			margin-bottom: 0.6rem;
+			display: block;
+			width: 100%;
+			height: 1.4rem;
+			line-height: 1.4rem;
+			text-align: center;
+			font-size: 0.56rem;
+			-webkit-border-radius: 1rem;
+			-moz-border-radius: 1rem;
+			border-radius: 1rem;
+			color: #ffffff;
+			background: #566ffe;
+		}
+	
+
+
+		.popLayers {
+			position: fixed;
+			top: 0px;
+			bottom: 0px;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 99999999999;
+			display: -webkit-flex;
+			-webkit-justify-content: center;
+			-webkit-align-items: center;
+		}
+		.popLayers .popWarps {
+			width: 11.6rem;
+			background: #fff;
+			-webkit-border-radius: 0.16rem;
+			-moz-border-radius: 0.16rem;
+			border-radius: 0.16rem;
+			padding: 0rem 0.8rem;
+		}
+		.popLayers .tip {
+			line-height: 1.12rem;
+			font-size: 0.68rem;
+			color: #666666;
+			text-align: left;
+		}
+	</style>
+<div class="popLayer hide">
+	<div class="popWarp">
+		<p class="tip" style="text-align:center;padding:0.5rem 0.6rem;">背景设置</p>
+		<div class="cabBtnWarp beijing">
+			<a class="layui-bg-red" data-color="layui-bg-red" href="javascript:;">赤色</a>
+			<a class="layui-bg-orange" data-color="layui-bg-orange" href="javascript:;">橙色</a>
+			<a class="layui-bg-green" data-color="layui-bg-green" href="javascript:;">墨绿</a>
+			<a class="layui-bg-cyan" data-color="layui-bg-cyan" href="javascript:;">藏青</a>
+			<a class="layui-bg-blue" data-color="layui-bg-blue" href="javascript:;">蓝色</a>
+			<a class="layui-bg-black" data-color="layui-bg-black" href="javascript:;">雅黑</a>
+		</div>
+		
+		<p class="tip" style="text-align:center;padding:0.2rem 0.6rem;">字体设置</p>
+		<div class="cabBtnWarp ziti">
+			<a class="layui-bg-green" data-ziti="0.6rem" href="javascript:;">小</a>
+			<a class="layui-bg-green" data-ziti="0.8rem" href="javascript:;">大</a>
+			<a class="layui-bg-green" data-ziti="0.9rem" href="javascript:;">较大</a>
+			<a class="layui-bg-green" data-ziti="1rem" href="javascript:;">特大</a>
+		
+		</div>
+		
+		<div class="cabBtnWarp guan" style="margin-left:3rem;">
+			<a class="layui-bg-red"  href="javascript:;">关闭</a>
+		</div>
+	</div>
+</div>
+
+
+<!--章节-->
+<div class="popLayers hide">
+	<div class="popWarps">
+		<p class="tip" style="text-align:center;padding:0.5rem 0.6rem;">章节选择</p>
+		<div class="cabBtnWarps zhangjie" style="max-height:10rem;overflow-y:auto"></div>
+		
+		<div class="cabBtnWarps guan" style="margin-left:3rem;margin-top:0.5rem">
+			<a class="layui-bg-red" style="width:4rem" href="javascript:;">关闭</a>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+var bgColor=$.cookie('bg_color');
+var zi=$.cookie('ziti')
+var lh=$.cookie('lh')
+var zts=$.cookie('zts')
+if(bgColor){
+	$('body').attr('class',bgColor)
+}
+if(zi){
+	$('.xsContent').css('font-size',zi)
+}else{
+	$('.xsContent').css('font-size','0.7rem')
+}
+if(lh){
+	$('.xsContent').css('line-height',lh)
+}else{
+	$('.xsContent').css('line-height','0.7rem')
+}
+if(zts){
+	$('.zz').css('color',zts)
+}
+
+
+$('.seting').click(function(){
+ $('.popLayer').removeClass('hide');
+})
+$('.guan').click(function(){
+ $('.popLayer').addClass('hide');$('.popLayers').addClass('hide');
+})
+
+$('.beijing a').click(function(){
+	var co=$(this).attr('data-color');
+	$('body').attr('class',co);
+	$('.zz').css('color','white');
+	//存储颜色选择
+	$.cookie('bg_color',co)
+	$.cookie('zts','white')
+	$('.popLayer').addClass('hide');
+	
+})
+$('.ziti a').click(function(){
+	var zi=$(this).attr('data-ziti');
+	$('.xsContent').css('font-size',zi)
+	$('.xsContent').css('line-height',zi)
+	$.cookie('lh',zi)
+	//存储颜色选择
+	$.cookie('ziti',zi);
+	$('.popLayer').addClass('hide');
+	
+})
+/**********************目录**********/
+$('.mulv').click(function(){
+	
+	
+	__index=layer.load(0, {
+			//content: "<div style='margin-left:-23px;padding-top:44px;width:120px;color:#FFF;'>正在处理。。。</div>",
+			shade: [0.2, '#000']
+		});
+	var bookId="{$bId}"
+	var bookName="{$bookName}"
+	
+	$.post("{:url('/index/index/getbookdetail')}",{bId:bookId},function(res){
+		var html='';
+		if(res.list){
+			$.each(res.list,function(i,val){
+				html +='<a class="layui-bg-gray" data-color="layui-bg-red" onclick="tiao(\''+val.link+'\',\''+val.zhang+'\',\''+bookId+'\',\''+bookName+'\')">'+val.zhang+'</a>'
+			})
+			$('.zhangjie').html(html)
+			layer.close(__index)
+			$('.popLayers').removeClass('hide');
+		}
+	})
+	
+})
+function upye(){
+	var zId="{$zId}"
+	var bId="{$bId}"
+	var bookName="{$bookName}"
+	var upyelink="{$upyelink}"
+	var upyeZhang="{$upyeZhang}"
+	if(zId==upyelink){
+		return false;
+	}
+	window.location.href="/index/index/bookkan/zId/"+upyelink+'/bId/'+bId+'/zhangName/'+upyeZhang+'/bookName/'+bookName+".html"
+}
+function nextye(){
+	var zId="{$zId}"
+	var bId="{$bId}"
+	var bookName="{$bookName}"
+	var nextlink="{$nextlink}"
+	var nextZhang="{$nextZhang}"
+	if(zId==nextlink){
+		return false;
+	}
+	window.location.href="/index/index/bookkan/zId/"+nextlink+'/bId/'+bId+'/zhangName/'+nextZhang+'/bookName/'+bookName+".html"
+}
+
+function tiao(u,c,n,a){
+	
+	window.location.href="/index/index/bookkan?bId="+n+'&zId='+u+'&zhangName='+c+'&bookName='+a+".html"
+}
+
+setTimeout(function () { test(); }, 7000);
+
+function test(){
+	$('.backtops').addClass('hide')
+	$('.mulv').addClass('hide')
+	$('.seting').addClass('hide')
+}
+
+$('body').click(function(){
+	$('.backtops').removeClass('hide')
+	$('.mulv').removeClass('hide')
+	$('.seting').removeClass('hide')
+	setTimeout(function () { test(); }, 7000);
+})
+
+</script>
+<div class="hide">{$Think.config.vod_config.vod_tongji|default=""}</div>
+{$Think.config.vod_config.vod_ad_dibu|default=""}
+</body>
+</html>

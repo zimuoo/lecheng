@@ -1,0 +1,104 @@
+<div class="stui-player__item clearfix">
+	<div class="stui-player__video embed-responsive embed-responsive-16by9 clearfix">
+		<style>.MacPlayer{background: #000000;font-size:14px;color:#F6F6F6;margin:0px;padding:0px;position:relative;overflow:hidden;width:100%;height:100%;min-height:100px;}.MacPlayer table{width:100%;height:100%;}.MacPlayer #playleft{position:inherit;!important;width:100%;height:100%;}</style>
+		<div class="MacPlayer embed-responsive" style="padding-bottom: 56.25%;">
+		
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tbody>
+				<tr>
+					{if $systemConfig.yun_bo_jx_switch eq 1 && $isYunBo eq 1}
+					
+						<td id="playleft" valign="top" style="">
+						{notempty name="$playData.playData"}
+						<iframe id="video" width="100%" height="100%" {if $isZY eq 1} src="{$systemConfig.vod_jx_yunbo_url|raw|default=''}{$playData['playData'][0]['zongyi'][0]['url']|raw|default=''}" {else} src="{$systemConfig.vod_jx_yunbo_url|raw|default=''}{$playData['playData'][0]['urlData'][0]['lianjie']|raw|default=''}" {/if} frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
+						{else/}
+						<iframe id="video" width="100%" height="100%" src="{$systemConfig.vod_jx_yunbo_url|raw|default=''}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
+						{/notempty}
+						</td>
+					
+					{else}
+						<td id="playleft" valign="top" style="">
+						{notempty name="$playData.playData"}
+						<iframe id="video" width="100%" height="100%" {if $isZY eq 1} src="{$systemConfig.vod_jx_url|raw|default=''}{$playData['playData'][0]['zongyi'][0]['url']|raw|default=''}" {else} src="{$systemConfig.vod_jx_url|raw|default=''}{$playData['playData'][0]['urlData'][0]['lianjie']|raw|default=''}" {/if} frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
+						{else/}
+						<iframe id="video" width="100%" height="100%" src="{$systemConfig.vod_jx_url|raw|default=''}" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
+						{/notempty}
+						</td>
+					{/if}
+					
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>						
+	<div class="stui-player__detail detail">
+		<ul class="more-btn">
+			
+			<li><a href="javascript:;" class="btn btn-default" onclick="shuaxin()">刷新 <i class="icon iconfont icon-refresh"></i></a></li>
+									
+			<li id="btn-prev"><a class="btn btn-default" href="javascript:;"><i class="icon iconfont icon-back"></i> 上一集</a></li>
+			<li id="btn-next"><a class="btn btn-default" href="javascript:;">下一集 <i class="icon iconfont icon-more"></i></a></li>
+			{notempty name="$Think.config.vod_xianlu_data"}
+			<li>
+				<a href="javascript:;" class="btn btn-default" id=qiehuan >换线 <i class="icon iconfont icon-set"></i></a>
+			</li>
+			{/notempty}
+
+		</ul>
+		
+		<div class="stui-pannel_bd col-pd clearfix hide xData">
+			<ul id="xld" class="stui-content__playlist column8 clearfix ">
+			{notempty name="$Think.config.vod_xianlu_data"}
+			{foreach $Think.config.vod_xianlu_data as $k=>$v}
+					<li>
+						<a style="border-color: #fd4964" href="javascript:;" data-playUrl="{$v}"  onclick="huanxian(this)">{$k}</a>
+					</li>
+			{/foreach}
+			{/notempty}
+			</ul>
+		</div>
+		
+
+		{$systemConfig.vod_ad_hengfu|raw|default=''}
+		<h1 class="title"><a href="">{$dyName|raw}</a></h1>
+		<input type="hidden" id="xuanji" value="1">
+		<p class="data margin-0">
+			<span class="text-muted">类型：</span>{$playData.other.list_name|raw|default='未知'}
+			<span class="split-line"></span>
+			<span class="text-muted">地区：</span>{$playData.other.vod_area|raw|default='未知'}
+			<span class="split-line"></span>
+			<span class="text-muted">年份：</span>{$playData.other.vod_year|raw|default=''}
+			<!-- <span class="text-muted">演员：</span>{$playData.other.vod_actor|default=''} -->
+		</p>											
+	</div>
+</div>
+
+
+<script type="text/javascript">
+$('#qiehuan').click(function(){
+	if($('.xData').hasClass('hide')){
+		$('.xData').removeClass('hide')
+	}else{
+		$('.xData').addClass('hide')
+	}
+	
+})
+function huanxian(obj){
+	
+
+		var jiekous = $(obj).attr('data-playUrl');
+		
+
+		var playurl=$(".playUrlList li[class='active']").children('a:eq(0)').attr('data-href');
+		
+		console.log(playurl)
+		if (playurl != '' || playurl != null) {
+			
+				$('#video').attr('src', jiekous + playurl);
+		}
+		$('.xData').addClass('hide');
+
+}
+</script>
+
+

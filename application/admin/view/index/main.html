@@ -1,0 +1,84 @@
+{include file="common/head"/}
+<div class="admin-main layui-anim layui-anim-upbit">
+    <div class="table-responsive">
+        <table class="layui-table" lay-even lay-skin="line">
+            <colgroup>
+                <col width="40%">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="text-center" colspan="2">{:lang('systemInfo')}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>网站域名</td>
+                <td>{$config.url}</td>
+            </tr>
+            <tr>
+                <td>网站目录</td>
+                <td>{$config.document_root}</td>
+            </tr>
+            <tr>
+                <td>服务器操作系统</td>
+                <td>{$config.server_os}</td>
+            </tr>
+            <tr>
+                <td>服务器端口</td>
+                <td>{$config.server_port}</td>
+            </tr>
+            <tr>
+                <td>服务器IP</td>
+                <td>{$config.server_ip}</td>
+            </tr>
+            <tr>
+                <td>WEB运行环境</td>
+                <td>{$config.server_soft}</td>
+            </tr>
+            <tr>
+                <td>MySQL数据库版本</td>
+                <td>{$config.mysql_version}</td>
+            </tr>
+            <tr>
+                <td>运行PHP版本</td>
+                <td>{$config.php_version}</td>
+            </tr>
+
+            <tr>
+                <td>最大上传限制</td>
+                <td>{$config.max_upload_size}</td>
+            </tr>
+            <tr>
+                <td>乐橙CMS版本</td>
+                <td>{:config('version')}</td>
+            </tr>
+            <tr>
+                <td>技术交流QQ群</td>
+                <td><a style="color:red;" href="https://jq.qq.com/?_wv=1027&k=5jRdJtf" target="_blank">892570651</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+ <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+  <legend>特别鸣谢以下人员：</legend>
+</fieldset>
+<div class="admin-main layui-anim layui-anim-upbit">
+     <div>
+        <a target="_blank" href="https://www.btjson.com" type="button"  class="layui-btn">Btjson</a>
+        <a target="_blank" href="http://sp.6080jx.com" type="button" class="layui-btn layui-btn-normal">指尖</a>
+        <a target="_blank" href="http://biuba.cn" type="button" class="layui-btn layui-btn-warm">晚安</a>
+        <!-- <a type="button" class="layui-btn layui-btn-danger">待入</a> -->
+      </div>
+</div>
+
+
+{include file="common/foot"/}
+<script>
+    layui.use('table', function() {
+        var table = layui.table;
+    })
+</script>
+</body>
+</html>

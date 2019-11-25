@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="lecheng/html/seo/book"}
+	{include file="lecheng/html/block/include"}
+	<script src="/static/layui/layui.all.js"></script>
+	<link rel="stylesheet" href="/static/layui/css/layui.css">
+</head>
+<body>
+	{include file="lecheng/html/block/head"}
+    <div class="container" style="margin-top: 2.5rem;">
+        <div class="row">
+
+			<div class="stui-pannel stui-pannel-bg clearfix">	
+				<div class="stui-pannel-box clearfix">	
+					<div class="stui-pannel_bd clearfix">
+						<div class="col-lg-wide-8 col-xs-1 padding-0">
+							<ul class="stui-vodlist clearfix type-slide">
+							{notempty name="$data"}
+								{foreach $data['list'] as $kk=>$v}								
+								<li class="col-md-6 col-sm-4 col-xs-3" >
+									<div class="stui-vodlist__box stui-vodlist__bg">
+										<a  style="border-radius: 8px" class="stui-vodlist__thumb lazyload" href="/index/index/bookdetail/bId/{$v.link|base64_encode|default=''}.html" title="{$v.title|default=''}" data-original="{$v.pic}">
+											<span class="play hidden-xs"></span>
+											<span class="pic-text text-right">官方热推</span>
+										</a>
+										<div class="stui-vodlist__detail active" style="border-radius: 8px">
+											<h4 class="title text-overflow"><a href="/index/index/bookdetail/bId/{$v.link|base64_encode|default=''}.html" title="{$v.title|default=''}">{$v.title|default=''}</a></h4>
+										</div>
+									</div>
+								</li>
+
+								{/foreach}
+								{/notempty}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+				
+
+
+            <div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box">
+					<div class="stui-pannel_hd">
+						<!-- <div class="stui-pannel__head active bottom-line clearfix">
+							<h3 class="title">
+								<img src="/template/stui13/statics/icon/icon_27.png"/>
+								在线小说
+							</h3>
+						</div> -->
+						<!-- 筛选 -->
+						<ul class="stui-screen__list type-slide bottom-line-dot clearfix typeType">
+							<!-- <li>
+								<span class="text-muted">按类型</span>
+							</li> -->
+							{foreach $data['type'] as $k=>$v}
+							<li {if $k eq 0}  class="active" {/if} data-cat="{$k+1}"><a href="javascript:;" class="text-muted catType" data-cat="{$k}">{$v.title}</a></li>
+							{/foreach}
+												  	
+						</ul>
+						<!-- end 筛选 -->
+						
+						
+					</div>
+					
+					<!-- <div class="-stui-header__search" style="width:90%;margin-left:0.83rem"> -->
+					<!--	<form id="search" name="search" method="get" action="/index/search/index" onSubmit="return submit();">-->
+					<!--    					<input type="text" id="wd" name="wd" class="mac_wd form-control" value="" placeholder="请输入小说名称..."/>-->
+					<!--		<button style="display: none" class="submit" id="searchbutton" type="submit" name="submit"></button>							-->
+					<!--	</form>-->
+					
+					<!--</div>-->
+					
+					<div class="stui-pannel_bd">
+						<ul class="stui-vodlist clearfix booklist">
+						{notempty name="$list"}
+						{foreach $list['list'] as $k1=>$v1}
+						
+							<li class="col-md-7 col-sm-4 col-xs-1 bottom-line">
+								<div class="stui-vodlist__box -stui-vodlist__bg">
+									<!-- <a  style="border-radius: 8px;" class="stui-vodlist__thumb lazyload" href="" title="" data-original="">
+										<span class="play hidden-xs"></span>
+										<span class="pic-text text-right">111</span>
+									</a> -->
+									<div class="stui-vodlist__detail -active">
+										<h1 style="font-size: 0.8rem" class="title text-overflow">
+											<a href="/index/index/bookdetail/bId/{$v1.link|base64_encode|default=''}.html" title="{$v1.title|default=''}">{$v1.title|default=''}</a>
+										
+										</h1>
+										<h1 style="font-size: 0.7rem;padding-top: 0.5rem" class="title text-overflow">
+										
+											<a style="color:#03937a" href="/index/index/bookkan/zId/{$v1.newContentLink|base64_encode|default=''}/zhangName/{$v1.newContent|default=''}/bookName/{$v1.title|default=''}/bId/{$v1.link|base64_encode|default=''}.html"  title="{$v1.newContent|default=''}">最新章节：{$v1.newContent|default=''}</a>
+										</h1>
+									</div>
+								</div><!-- 列表-->
+							</li>
+						
+
+						{/foreach}
+						{/notempty}
+
+						</ul>
+					</div>
+				</div>				
+			</div>		
+	
+						<ul class="stui-page text-center clearfix">
+							<li><a class="shouye" href="javascript:;">首页</a></li>
+							<li><a class="upye" href="javascript:;">上一页</a></li>
+						
+							<li id="page" class="active visible-xs"><span class="num">1</span></li>
+							
+							<li><a class="nextye" href="javascript:;">下一页</a></li>
+							<li><a class="weiye" href="javascript:;">尾页</a></li>
+						</ul>
+					
+
+
+        </div>
+    </div>
+	{include file="lecheng/html/block/foot"}
+</body>
+
+</html>
+<script>
+//loadData(1,1);
+$('.typeType li').click(function(){
+		
+	$(this).siblings().removeClass('active');
+	$(this).addClass('active');
+	var type=$(this).attr('data-cat');
+
+	//layer.msg(type);return   ;
+	loadData(type,1);
+})
+
+function loadData(type,page){
+	__index=layer.load(0, {
+			//content: "<div style='margin-left:-23px;padding-top:44px;width:120px;color:#FFF;'>正在处理。。。</div>",
+			shade: [0.2, '#000']
+		});
+	$('.booklist').load("{:url('index/bookList')}",{type:type,page:page},function(){
+		layer.close(__index)
+	});
+}
+
+function searchXs(){
+	
+}
+
+						/************分页********/
+						//	var nowPage=$('.num').html();
+						//	console.log(nowPage)
+							var totalPage="{$list['totalPage']}";
+							$('.shouye').click(function(){
+								var catpage=$(".typeType li[class='active']").attr('data-cat');
+								loadData(catpage,1);
+								
+							});
+						
+							$('.upye').click(function(){
+								if(parseInt($('.num').html())==1){
+									return false;
+								}
+								var catup=$(".typeType li[class='active']").attr('data-cat');
+								var pageup=parseInt($('.num').html())-1;
+								$('.num').html(pageup)
+								loadData(catup,pageup);
+							
+						
+							})
+						
+							$('.nextye').click(function(){
+								if(parseInt($('.num').html())==totalPage){
+									return false;
+								}
+								var catnex=$(".typeType li[class='active']").attr('data-cat');
+								var pagenex=parseInt($('.num').html())+1;
+								$('.num').html(pagenex)
+								loadData(catnex,pagenex);
+							
+							})
+							$('.weiye').click(function(){
+								if(parseInt($('.num').html())==totalPage){
+									return false;
+								}
+								var catw=$(".typeType li[class='active']").attr('data-cat');
+								var pagew=totalPage;
+								$('.num').html(pagew)
+								loadData(catw,pagew);
+							
+							})
+					
+
+
+</script>

@@ -1,0 +1,42 @@
+<div id="banner" class="stui-banner carousel slide">
+	<a class="carousel-control left" href="#banner" data-slide="prev"><i class="icon iconfont icon-back"></i></a>
+	<a class="carousel-control right huangdengclick" href="#banner" data-slide="next"><i class="icon iconfont icon-more"></i></a>
+    <div class="carousel-inner">
+
+		{notempty name="$huandengpian"}
+		{foreach $huandengpian as $k=>$v}
+        <div class="item stui-banner__item{if $k eq 0} active {/if}">
+            <a class="stui-banner__pic" href="/index/search/index/wd/{$v.name}" style="background: url({$v.pic}) ";></a>
+        </div>
+		{/foreach}
+		{/notempty}
+
+
+
+    </div>
+    <div class="stui-banner__switch clearfix hidden-sm hidden-xs">
+    	<div class="container">
+		    <div class="row">
+			    <ul class="carousel-indicators">
+
+					{notempty name="$huandengpian"}
+					{foreach $huandengpian as $k=>$v}
+                  <li data-target="#banner" data-slide-to="{$k}" class="{if $k eq 0} active {/if}"><span class="stui-vodlist__thumb" data-original="{$v.pic}" style="background: url({$v.pic}) no-repeat; padding-top: 45%; background-position: 50% 50%; background-size: cover;" title="{$v.name}"></span>
+					</li>
+					{/foreach}
+					{/notempty}
+			    </ul>
+	    	</div>
+	    </div>
+    </div>	    
+</div>
+<style type="text/css">
+	.stui-banner__pic{ padding-top: 30%; background-position: center center !important;}
+	@media (max-width:1023px){.stui-banner__pic{ padding-top: 45%; background-position: 50% 50% !important; background-size: cover !important;}}
+	@media (max-width:767px){.stui-banner__pic{ padding-top: 55%; background-position: 50% 50% !important; background-size: cover !important;}}
+</style>
+<script type="text/javascript">
+	setInterval(function(){
+		$('.huangdengclick').click();
+	},8000)
+</script>

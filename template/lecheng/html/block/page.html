@@ -1,0 +1,87 @@
+
+<ul class="stui-page text-center clearfix">
+	<li><a class="shouye" href="javascript:;">首页</a></li>
+	<li><a class="upye" href="javascript:;">上一页</a></li>
+	{for start="1" end="{$totalPages}"}
+	<li class="hidden-xs {if $i eq $page}active{/if}"><a href="javascript:;">{$i}</a></li>
+	{/for}
+	<li id="page" class="active visible-xs"><span class="num">{$page}</span></li>
+	<li><a class="nextye" href="javascript:;">下一页</a></li>
+	<li><a class="weiye" href="javascript:;">尾页</a></li>
+</ul>
+
+
+
+<script>
+	var vodType="{$vodType}";
+	var nowPage="{$page}";
+	var totalPage="{$totalPages}";
+	$('.catType').click(function(){
+		$(this).parent().addClass('active');
+		$(this).parent().siblings().removeClass('active');
+		var cat=$(this).attr('data-cat');
+		var year=$(".yearType li[class='active']").attr('data-year');
+		var area=$(".areaType li[class='active']").attr('data-area');
+		window.location.href="/index/type/index/typeId/"+cat+"/dyTime/"+year+"/area/"+area+"/vodType/"+vodType+".html"
+	});
+
+	$('.year').click(function(){
+		$(this).parent().addClass('active');
+		$(this).parent().siblings().removeClass('active');
+		var years=$(this).parent().attr('data-year');
+		var cats=$(".typeType li[class='active']").attr('data-cat');
+		var areas=$(".areaType li[class='active']").attr('data-area');
+		window.location.href="/index/type/index/typeId/"+cats+"/dyTime/"+years+"/area/"+areas+"/vodType/"+vodType+".html"
+	});
+
+	$('.area').click(function(){
+		$(this).parent().addClass('active');
+		$(this).parent().siblings().removeClass('active');
+		var catss=$(".typeType li[class='active']").attr('data-cat');
+		var yearss=$(".yearType li[class='active']").attr('data-year');
+		var areass=$(this).parent().attr('data-area');
+		window.location.href="/index/type/index/typeId/"+catss+"/dyTime/"+yearss+"/area/"+areass+"/vodType/"+vodType+".html"
+	});
+	/************分页********/
+	$('.shouye').click(function(){
+		var catpage=$(".typeType li[class='active']").attr('data-cat');
+		var yearpage=$(".yearType li[class='active']").attr('data-year');
+		var areapage=$(".areaType li[class='active']").attr('data-area');
+		window.location.href="/index/type/index/typeId/"+catpage+"/dyTime/"+yearpage+"/area/"+areapage+"/vodType/"+vodType+".html"
+	});
+
+	$('.upye').click(function(){
+		if(nowPage==1){
+			return false;
+		}
+		var catup=$(".typeType li[class='active']").attr('data-cat');
+		var yearup=$(".yearType li[class='active']").attr('data-year');
+		var areaup=$(".areaType li[class='active']").attr('data-area');
+		var pageup=nowPage-1;
+		window.location.href="/index/type/index/typeId/"+catup+"/dyTime/"+yearup+"/area/"+areaup+"/vodType/"+vodType+"/page/"+pageup+".html";
+
+	})
+
+	$('.nextye').click(function(){
+		if(nowPage==totalPage){
+			return false;
+		}
+		var catnex=$(".typeType li[class='active']").attr('data-cat');
+		var yearnex=$(".yearType li[class='active']").attr('data-year');
+		var areanex=$(".areaType li[class='active']").attr('data-area');
+		var pagenex=parseInt(nowPage)+1;
+		window.location.href="/index/type/index/typeId/"+catnex+"/dyTime/"+yearnex+"/area/"+areanex+"/vodType/"+vodType+"/page/"+pagenex+".html";
+	})
+	$('.weiye').click(function(){
+		if(nowPage==totalPage){
+			return false;
+		}
+		var catw=$(".typeType li[class='active']").attr('data-cat');
+		var yearw=$(".yearType li[class='active']").attr('data-year');
+		var areaw=$(".areaType li[class='active']").attr('data-area');
+		var pagew=totalPage;
+		window.location.href="/index/type/index/typeId/"+catw+"/dyTime/"+yearw+"/area/"+areaw+"/vodType/"+vodType+"/page/"+pagew+".html";
+	})
+</script>
+
+

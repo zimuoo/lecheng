@@ -1,0 +1,25 @@
+					{notempty name="$list"}
+						{foreach $list['list'] as $k1=>$v1}
+						
+							<li class="col-md-7 col-sm-4 col-xs-1 bottom-line">
+								<div class="stui-vodlist__box -stui-vodlist__bg">
+									<!-- <a  style="border-radius: 8px;" class="stui-vodlist__thumb lazyload" href="" title="" data-original="">
+										<span class="play hidden-xs"></span>
+										<span class="pic-text text-right">111</span>
+									</a> -->
+									<div class="stui-vodlist__detail -active">
+										<h1 style="font-size: 0.8rem" class="title text-overflow">
+											<a href="/index/index/bookdetail/bId/{$v1.link|base64_encode|default=''}.html" title="{$v1.title|default=''}">{$v1.title|default=''}</a>
+										
+										</h1>
+										<h1 style="font-size: 0.7rem;padding-top: 0.5rem" class="title text-overflow">
+										
+											<a style="color:#03937a" href="/index/index/bookkan/zId/{$v1.newContentLink|base64_encode|default=''}/zhangName/{$v1.newContent|default=''}/bookName/{$v1.title|default=''}/bId/{$v1.link|base64_encode|default=''}.html"  title="{$v1.newContent|default=''}">最新章节：{$v1.newContent|default=''}</a>
+										</h1>
+									</div>
+								</div><!-- 列表-->
+							</li>
+						
+
+						{/foreach}
+						{/notempty}

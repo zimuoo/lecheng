@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="lecheng/html/seo/huya"}
+	{include file="lecheng/html/block/include"}
+	<link rel="stylesheet" href="{$templatePath}css/app.css" />
+
+</head>
+<body>
+	{include file="lecheng/html/block/head"}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="stui-pannel stui-pannel-bg clearfix">
+				<div class="stui-pannel-box">
+					<div class="stui-pannel_hd">
+						<div class="stui-pannel__head active bottom-line clearfix">
+							<h3 class="title">
+								<img src="{$templatePath}icon/icon_27.png"/>
+								虎牙轮播
+							</h3>
+						</div>
+						<!-- 筛选 -->
+						{notempty name="$huyaType"}
+						{foreach $huyaType as $k=>$v}
+						<ul class="stui-screen__list type-slide bottom-line-dot clearfix huType">
+							<li>
+								<span class="text-muted">{$v.title|default=''}</span>
+							</li>
+								<li></li>
+							{foreach $v.list as $kk=>$vv}
+							<li data-cid="{$vv.cid}" {if $cid eq $vv.cid} class="active" {/if}><a  class="area" href="javascript:;" data-cid="{$vv.cid}">{$vv.title}</a></li>
+							{/foreach}
+
+						</ul>
+						{/foreach}
+						{/notempty}
+
+						
+						<!-- end 筛选 -->
+					</div>
+					<div class="stui-pannel_bd">
+						<ul class="stui-vodlist clearfix">
+
+							{notempty name="$listData.data.datas"}
+							{foreach $listData.data.datas as $kk=>$vv}
+							
+							<li class="col-md-7 col-sm-4 col-xs-4">
+								<div class="stui-vodlist__box stui-vodlist__bg">
+									<a  style="border-radius: 8px" class="stui-vodlist__thumb lazyload" onclick="huya('{$vv.playUrl}','{$vv.roomName}')" title="{$vv.roomName}" data-original="{$vv.screenshot}">
+										<span class="play hidden-xs"></span>
+										<span class="pic-text text-right">在线{$vv.totalCount|default='0'}人</span>
+									</a>
+									<div class="stui-vodlist__detail active">
+										<h4 class="title text-overflow"><a onclick="huya('{$vv.playUrl}')" title="{$vv.roomName}">{$vv.roomName}</a></h4>
+										<p class="text text-overflow text-muted hidden-xs">{$vv.nick|default='内详'}</p>
+									</div>
+								</div><!-- 列表-->
+							</li>
+
+							{/foreach}
+							{/notempty}
+
+						</ul>
+					</div>
+				</div>				
+			</div>		
+		{include file="lecheng/html/block/huyapage"}<!-- 翻页-->
+        </div>
+    </div>
+    		<div class="zb-plays">
+					<div class="zb-play"><!-- <a href="javascript:;" class="close">关闭</a> -->
+						<div class="ipcon" id="ipcon"  style="background: #000000;height:85%">
+						<iframe id="frmLive" frameborder="0" width="100%" src="" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
+						</div>
+					</div>
+    			</div>
+    			
+    
+    
+	{include file="lecheng/html/block/foot"}
+</body>
+</html>
+<script>
+	function huya(url,title){
+		var jx="{$Think.config.huya_jx_url}"
+		$('#frmLive').attr('src', jx+url);
+		$('html').addClass('show');
+		var ti="虎牙轮播-"+title+"-{$systemConfig.title|default=''}"
+		$('title').html(ti)
+
+		
+		$('.zb-plays').on('click', function() {
+		$('html').removeClass('show');
+		document.getElementById('frmLive').src = '';
+		})
+	}
+</script>

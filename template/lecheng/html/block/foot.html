@@ -1,0 +1,75 @@
+<div class="stui-foot clearfix" style="margin-bottom: 25px;">
+	<div class="container">
+		<div class="row">		
+			<div class="col-pd text-center hidden-xs">Copyright <span class="fontArial"> </span> 2009-2019  Inc. All Rights Reserved. <a href="http://strjson.com" target="_blank">[乐橙CMS程序]</a><br>乐橙CMS网站合作联系QQ： 联系邮箱：<a href="mailto:">296528828@qq.com</a></div>
+			<p class="share bdsharebuttonbox text-center margin-0 hidden-sm hidden-xs"></p>
+						
+			<p class="text-muted text-center visible-xs">Copyright © 乐橙CMS内容管理系统</p>
+			<p class="text-muted text-center visible-xs">{$systemConfig.copyright|raw|default=""}</p>
+		</div>
+	</div>
+</div>
+<ul class="stui-extra clearfix">
+	<li>
+		<a class="backtop" href="javascript:scroll(0,0)" style="display: none;"><i class="icon iconfont icon-less"></i></a>
+	</li>
+	<li class="visible-xs">
+		<a class="open-share" href="javascript:;"><i class="icon iconfont icon-share"></i></a>
+	</li>
+	<li class="hidden-xs">
+		<span><i class="icon iconfont icon-qrcode"></i></span>
+		<div class="sideslip">
+			<div class="col-pd text-center">
+				<p><img class="qrcode" width="150" height="150" /></p>
+				<p class="margin-0">扫码用手机访问</p>
+			</div>			
+		</div>
+	</li>
+	<li>
+		<a href=""><i class="icon iconfont icon-comments"></i></a>
+	</li>
+</ul>
+
+{notempty name="$dibuNavData"}
+<div id="footer" class="border-t hidden-lg hidden-md">
+	<ul class="flex-wrap" style="font-weight:bold">
+		
+		{foreach $dibuNavData as $k=>$v}
+		<a  onclick="jumpUrl(this)" data-jpurl="{$v.url}" class="flex-con paiban" href="javascript:;"><li>{$v.title}</li></a>
+
+		{/foreach}
+
+		<!-- <a class="flex-con paiban " href=""><li onclick="randomSwitchBtn(this);">尝鲜</li></a>
+		<a class="flex-con paiban " href=""><li onclick="randomSwitchBtn(this);">电影</li></a>
+		<a class="flex-con paiban " href=""><li onclick="randomSwitchBtn(this);">直播</li></a>
+		<a class="flex-con paiban " href=""><li onclick="randomSwitchBtn(this);">音乐</li></a> -->
+	</ul>
+</div>
+{/notempty}
+
+<script type="text/javascript">
+function jumpUrl(obj){
+	var url=$(obj).attr('data-jpurl');
+	if (url) {
+window.location.href=url;
+	}else{
+		alert('敬请期待。。')
+	}
+}
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<div class="hide">{$systemConfig.vod_tongji|raw|default=""}</div>
