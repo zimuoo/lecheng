@@ -164,4 +164,62 @@ class Type extends Controller
 			$lisData=BaseService::getHuyaListData($cid,$page);
 		return $lisData;
 	}
+	
+	public function zztj()
+	{
+		$page=input('page')?intval(input('page')):1;//页数
+		$cid=input('cid')?intval(input('cid')):0;
+		$systemConfig=$this->systemConfig; //系统数据
+		
+		//$data=$this->service->getcxdy($page,$cid);
+
+		$data=$this->getZZData($page,$cid);
+		$this->assign('vodTypeName','站长推荐');
+		$this->assign('typeId',$cid);
+		$this->assign('page',$page); //当前页数
+		$this->assign('listData',isset($data['list'])?$data['list']:[]);
+		$this->assign('typeData',$this->getZZType());
+		$this->assign('totalPages',$data['totalPage']); //总页数
+		return view("{$systemConfig['vod_template']}/html/vod/zz");
+		
+	}
+	
+	public function getZZType()
+	{
+		$data=Db::table('le_type')->where(['open'=>1])->select();
+		
+		if($data){
+			foreach ($data as &$v){
+				$v['list_name']=$v['type_name'];
+				$v['list_id']=$v['type_id'];
+			}
+		}
+	
+		return $data;
+	}
+	public function getZZData($pageNo=1,$cid=0)
+	{
+		$pageSize=28;//每页数据数量
+		$page=($pageNo-1)*$pageSize;
+		if($cid !=0){
+			$total=Db::table('le_vod')->where(array('type_id' => $cid,'open'=>1))->select();
+			$list=Db::table('le_vod')->where(array('type_id' => $cid,'open'=>1))->limit($page,$pageSize)->select();
+		}else{
+			$total=Db::table('le_vod')->where(array('open'=>1))->select();
+			$list=Db::table('le_vod')->where(array('open'=>1))->limit($page,$pageSize)->select();
+		}
+		
+		
+		// $data['total']=ceil($list->total() / $pageSize);
+		// $data['totalPage']=ceil($data->total() / 10);
+		$data = [
+            'total'     => count($total),         // 总记录数
+            'page'       => $pageNo,   // 当前页码
+            'size'      => $pageSize,      // 每页记录数
+            'totalPage' => ceil(count($total) / $pageSize),
+            'list'      => $list          // 分页数据
+        ];
+        
+		return $data;
+	}
 }

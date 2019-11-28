@@ -227,7 +227,7 @@ CREATE TABLE `auth_rule` (
   `zt` int(1) DEFAULT NULL,
   `menustatus` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=282 DEFAULT CHARSET=utf8 COMMENT='权限节点';
+) ENGINE=MyISAM AUTO_INCREMENT=288 DEFAULT CHARSET=utf8 COMMENT='权限节点';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,7 +236,7 @@ CREATE TABLE `auth_rule` (
 
 LOCK TABLES `auth_rule` WRITE;
 /*!40000 ALTER TABLE `auth_rule` DISABLE KEYS */;
-INSERT INTO `auth_rule` VALUES (1,'System','系统设置',1,1,0,'icon-cogs','',0,0,1446535750,1,1),(2,'System/system','系统设置',1,1,0,'','',1,1,1446535789,1,1),(3,'Database/database','数据库管理',1,1,0,'icon-database','',0,2,1446535805,1,1),(4,'Database/restore','还原数据库',1,1,0,'','',3,10,1446535750,1,1),(5,'Database/database','数据库备份',1,1,0,'','',3,1,1446535834,1,1),(15,'Auth/adminList','权限管理',1,1,0,'icon-lifebuoy','',0,1,1446535750,1,1),(16,'Auth/adminList','管理员列表',1,1,0,'','',15,0,1446535750,1,1),(17,'Auth/adminGroup','用户组列表',1,1,0,'','',15,1,1446535750,1,1),(18,'Auth/adminRule','权限管理',1,1,0,'','',15,2,1446535750,1,1),(28,'Function','网站功能',1,1,0,'icon-cog','',0,6,1447231590,1,1),(31,'Link/index','影视菜单',1,1,0,'','',28,1,1447232183,0,1),(32,'Link/add','操作-添加',1,1,0,'','',31,1,1447639935,0,0),(108,'Auth/ruleAdd','操作-添加',1,1,0,'','',18,0,1461550835,1,0),(109,'Auth/ruleState','操作-状态',1,1,0,'','',18,5,1461550949,1,0),(110,'Auth/ruleTz','操作-验证',1,1,0,'','',18,6,1461551129,1,0),(111,'Auth/ruleorder','操作-排序',1,1,0,'','',18,7,1461551263,1,0),(112,'Auth/ruleDel','操作-删除',1,1,0,'','',18,4,1461551536,1,0),(114,'Auth/ruleEdit','操作-修改',1,1,0,'','',18,2,1461551913,1,0),(116,'Auth/groupEdit','操作-修改',1,1,0,'','',17,3,1461552326,1,0),(117,'Auth/groupDel','操作-删除',1,1,0,'','',17,30,1461552349,1,0),(118,'Auth/groupAccess','操作-权限',1,1,0,'','',17,40,1461552404,1,0),(119,'Auth/adminAdd','操作-添加',1,1,0,'','',16,0,1461553162,1,0),(120,'Auth/adminEdit','操作-修改',1,1,0,'','',16,2,1461554130,1,0),(121,'Auth/adminDel','操作-删除',1,1,0,'','',16,4,1461554152,1,0),(126,'Database/export','操作-备份',1,1,0,'','',5,1,1461550835,1,0),(127,'Database/optimize','操作-优化',1,1,0,'','',5,1,1461550835,1,0),(128,'Database/repair','操作-修复',1,1,0,'','',5,1,1461550835,1,0),(129,'Database/delSqlFiles','操作-删除',1,1,0,'','',4,3,1461550835,1,0),(230,'Database/import','操作-还原',1,1,0,'','',4,1,1497423595,0,0),(145,'Auth/adminState','操作-状态',1,1,0,'','',16,5,1461550835,1,0),(149,'Auth/groupAdd','操作-添加',1,1,0,'','',17,1,1461550835,1,0),(151,'Auth/groupRunaccess','操作-权存',1,1,0,'','',17,50,1461550835,1,0),(181,'Auth/groupState','操作-状态',1,1,0,'','',17,50,1461834340,1,0),(206,'Wechat','微信管理',1,1,0,'icon-bubbles2','',0,8,1487063570,0,1),(207,'Wechat/config','公众号管理',1,1,0,'','',206,1,1487063705,0,1),(208,'Wechat/menu','菜单管理',1,1,0,'','',206,2,1487063765,0,0),(209,'Wechat/materialmessage','消息素材',1,1,0,'','',206,3,1487063834,0,0),(212,'Wechat/weixin','操作-设置',1,1,0,'','',207,1,1487064541,0,0),(213,'Wechat/addMenu','操作-添加',1,1,0,'','',208,1,1487149151,0,0),(214,'Wechat/editText','操作-编辑',1,1,0,'','',209,2,1487233984,0,0),(215,'Wechat/addText','操作-添加',1,1,0,'','',209,1,1487234062,0,0),(232,'Database/downFile','操作-下载',1,1,0,'','',4,2,1497423744,0,0),(249,'Link/edit','操作-编辑',1,1,0,'','',31,2,1497427694,0,0),(250,'Link/linkState','操作-状态',1,1,0,'','',31,3,1497427734,0,0),(251,'Link/del','操作-删除',1,1,0,'','',31,4,1497427780,0,0),(258,'Wechat/editMenu','操作-编辑',1,1,0,'','',208,2,1497429671,0,0),(259,'Wechat/menuOrder','操作-排序',1,1,0,'','',208,3,1497429707,0,0),(260,'Wechat/menuState','操作-状态',1,1,0,'','',208,4,1497429764,0,0),(261,'Wechat/delMenu','操作-删除',1,1,0,'','',208,5,1497429822,0,0),(262,'Wechat/createMenu','操作-生成菜单',1,1,0,'','',208,6,1497429886,0,0),(263,'Wechat/delText','操作-删除',1,1,0,'','',209,3,1497430020,0,0),(273,'Wechat/replay','回复设置',1,1,0,'','',206,4,1508215988,0,0),(280,'Database/dosql','SQL执行',1,1,0,'','',3,50,1573180923,NULL,1),(281,'Links/index','友情链接',1,1,1,'','',28,50,1574386335,NULL,1);
+INSERT INTO `auth_rule` VALUES (1,'System','系统设置',1,1,0,'icon-cogs','',0,0,1446535750,1,1),(2,'System/system','系统设置',1,1,0,'','',1,1,1446535789,1,1),(3,'Database/database','数据库管理',1,1,0,'icon-database','',0,2,1446535805,1,1),(4,'Database/restore','还原数据库',1,1,0,'','',3,10,1446535750,1,1),(5,'Database/database','数据库备份',1,1,0,'','',3,1,1446535834,1,1),(15,'Auth/adminList','权限管理',1,1,0,'icon-lifebuoy','',0,1,1446535750,1,1),(16,'Auth/adminList','管理员列表',1,1,0,'','',15,0,1446535750,1,1),(17,'Auth/adminGroup','用户组列表',1,1,0,'','',15,1,1446535750,1,1),(18,'Auth/adminRule','权限管理',1,1,0,'','',15,2,1446535750,1,1),(28,'Function','网站功能',1,1,0,'icon-cog','',0,6,1447231590,1,1),(31,'Link/index','影视菜单',1,1,0,'','',28,1,1447232183,0,1),(32,'Link/add','操作-添加',1,1,0,'','',31,1,1447639935,0,0),(108,'Auth/ruleAdd','操作-添加',1,1,0,'','',18,0,1461550835,1,0),(109,'Auth/ruleState','操作-状态',1,1,0,'','',18,5,1461550949,1,0),(110,'Auth/ruleTz','操作-验证',1,1,0,'','',18,6,1461551129,1,0),(111,'Auth/ruleorder','操作-排序',1,1,0,'','',18,7,1461551263,1,0),(112,'Auth/ruleDel','操作-删除',1,1,0,'','',18,4,1461551536,1,0),(114,'Auth/ruleEdit','操作-修改',1,1,0,'','',18,2,1461551913,1,0),(116,'Auth/groupEdit','操作-修改',1,1,0,'','',17,3,1461552326,1,0),(117,'Auth/groupDel','操作-删除',1,1,0,'','',17,30,1461552349,1,0),(118,'Auth/groupAccess','操作-权限',1,1,0,'','',17,40,1461552404,1,0),(119,'Auth/adminAdd','操作-添加',1,1,0,'','',16,0,1461553162,1,0),(120,'Auth/adminEdit','操作-修改',1,1,0,'','',16,2,1461554130,1,0),(121,'Auth/adminDel','操作-删除',1,1,0,'','',16,4,1461554152,1,0),(126,'Database/export','操作-备份',1,1,0,'','',5,1,1461550835,1,0),(127,'Database/optimize','操作-优化',1,1,0,'','',5,1,1461550835,1,0),(128,'Database/repair','操作-修复',1,1,0,'','',5,1,1461550835,1,0),(129,'Database/delSqlFiles','操作-删除',1,1,0,'','',4,3,1461550835,1,0),(230,'Database/import','操作-还原',1,1,0,'','',4,1,1497423595,0,0),(145,'Auth/adminState','操作-状态',1,1,0,'','',16,5,1461550835,1,0),(149,'Auth/groupAdd','操作-添加',1,1,0,'','',17,1,1461550835,1,0),(151,'Auth/groupRunaccess','操作-权存',1,1,0,'','',17,50,1461550835,1,0),(181,'Auth/groupState','操作-状态',1,1,0,'','',17,50,1461834340,1,0),(206,'Wechat','微信管理',1,1,0,'icon-bubbles2','',0,8,1487063570,0,1),(207,'Wechat/config','公众号管理',1,1,0,'','',206,1,1487063705,0,1),(208,'Wechat/menu','菜单管理',1,1,0,'','',206,2,1487063765,0,0),(209,'Wechat/materialmessage','消息素材',1,1,0,'','',206,3,1487063834,0,0),(212,'Wechat/weixin','操作-设置',1,1,0,'','',207,1,1487064541,0,0),(213,'Wechat/addMenu','操作-添加',1,1,0,'','',208,1,1487149151,0,0),(214,'Wechat/editText','操作-编辑',1,1,0,'','',209,2,1487233984,0,0),(215,'Wechat/addText','操作-添加',1,1,0,'','',209,1,1487234062,0,0),(232,'Database/downFile','操作-下载',1,1,0,'','',4,2,1497423744,0,0),(249,'Link/edit','操作-编辑',1,1,0,'','',31,2,1497427694,0,0),(250,'Link/linkState','操作-状态',1,1,0,'','',31,3,1497427734,0,0),(251,'Link/del','操作-删除',1,1,0,'','',31,4,1497427780,0,0),(258,'Wechat/editMenu','操作-编辑',1,1,0,'','',208,2,1497429671,0,0),(259,'Wechat/menuOrder','操作-排序',1,1,0,'','',208,3,1497429707,0,0),(260,'Wechat/menuState','操作-状态',1,1,0,'','',208,4,1497429764,0,0),(261,'Wechat/delMenu','操作-删除',1,1,0,'','',208,5,1497429822,0,0),(262,'Wechat/createMenu','操作-生成菜单',1,1,0,'','',208,6,1497429886,0,0),(263,'Wechat/delText','操作-删除',1,1,0,'','',209,3,1497430020,0,0),(273,'Wechat/replay','回复设置',1,1,0,'','',206,4,1508215988,0,0),(280,'Database/dosql','SQL执行',1,1,0,'','',3,50,1573180923,NULL,1),(281,'Links/index','友情链接',1,1,1,'','',28,50,1574386335,NULL,1),(283,'Vod','影片入库',1,1,0,'icon-cogs','',0,50,1574666728,NULL,1),(284,'Vod/type','影视分类',1,1,0,'','',283,1,1574666873,NULL,1),(285,'Vod/vodinfo','视频数据',1,1,0,'','',283,50,1574666970,NULL,1),(286,'Store','应用市场',1,1,0,'icon-cog','',0,51,1574848450,NULL,1),(287,'Store/index','模板市场',1,1,1,'','',286,50,1574848483,NULL,1);
 /*!40000 ALTER TABLE `auth_rule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,7 +492,7 @@ CREATE TABLE `feast_element` (
   `open` int(1) DEFAULT '1' COMMENT '是否开启',
   `addtime` varchar(15) DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='节日元素表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='节日元素表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -545,6 +545,86 @@ INSERT INTO `field` VALUES (1,1,'title','标题','',1,1,80,'defaul','标题必�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `le_type`
+--
+
+DROP TABLE IF EXISTS `le_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `le_type` (
+  `type_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(60) NOT NULL DEFAULT '',
+  `type_sort` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `open` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '0禁1启用',
+  PRIMARY KEY (`type_id`),
+  KEY `type_sort` (`type_sort`) USING BTREE,
+  KEY `type_name` (`type_name`)
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `le_type`
+--
+
+LOCK TABLES `le_type` WRITE;
+/*!40000 ALTER TABLE `le_type` DISABLE KEYS */;
+INSERT INTO `le_type` VALUES (1,'电影',1,1),(2,'连续剧',5,1),(3,'综艺',7,1),(4,'动漫',10,1),(7,'喜剧片',4,1),(6,'动作片',2,1),(8,'爱情片',9,1),(9,'科幻片',11,1),(10,'恐怖片',13,1),(11,'剧情片',14,1),(12,'战争片',15,1),(13,'国产剧',3,1),(14,'港台剧',6,1),(15,'日韩剧',8,1),(16,'欧美剧',12,1),(28,'MV',16,1);
+/*!40000 ALTER TABLE `le_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `le_vod`
+--
+
+DROP TABLE IF EXISTS `le_vod`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `le_vod` (
+  `vod_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `vod_name` varchar(255) NOT NULL DEFAULT '',
+  `type_id` smallint(6) NOT NULL DEFAULT '0' COMMENT '分类id',
+  `vod_tag` varchar(100) NOT NULL DEFAULT '',
+  `vod_pic` varchar(255) NOT NULL DEFAULT '' COMMENT '主图',
+  `vod_actor` varchar(255) NOT NULL DEFAULT '' COMMENT '演员',
+  `vod_director` varchar(255) NOT NULL DEFAULT '' COMMENT '导演',
+  `vod_remarks` varchar(100) NOT NULL DEFAULT '',
+  `vod_area` varchar(20) NOT NULL DEFAULT '' COMMENT '地区',
+  `vod_lang` varchar(10) NOT NULL DEFAULT '' COMMENT '语言',
+  `vod_year` varchar(10) NOT NULL DEFAULT '' COMMENT '年代',
+  `vod_author` varchar(60) NOT NULL DEFAULT '',
+  `open` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `vod_score` decimal(3,1) unsigned NOT NULL DEFAULT '0.0' COMMENT '评分',
+  `vod_time_add` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '入库时间',
+  `vod_content` text COMMENT '简介',
+  `vod_play_from` varchar(255) NOT NULL DEFAULT '',
+  `vod_play_url` mediumtext NOT NULL COMMENT '播放地址',
+  `file` varchar(255) DEFAULT '',
+  `vod_continu` varchar(64) NOT NULL DEFAULT '',
+  PRIMARY KEY (`vod_id`),
+  KEY `type_id` (`type_id`) USING BTREE,
+  KEY `vod_year` (`vod_year`) USING BTREE,
+  KEY `vod_area` (`vod_area`) USING BTREE,
+  KEY `vod_lang` (`vod_lang`) USING BTREE,
+  KEY `vod_tag` (`vod_tag`) USING BTREE,
+  KEY `vod_lock` (`open`) USING BTREE,
+  KEY `vod_time_add` (`vod_time_add`) USING BTREE,
+  KEY `vod_actor` (`vod_actor`) USING BTREE,
+  KEY `vod_director` (`vod_director`) USING BTREE,
+  KEY `vod_score` (`vod_score`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `le_vod`
+--
+
+LOCK TABLES `le_vod` WRITE;
+/*!40000 ALTER TABLE `le_vod` DISABLE KEYS */;
+INSERT INTO `le_vod` VALUES (1,'第一滴血5：最后的血',6,'','https://s2.ax1x.com/2019/11/28/QP6YQS.jpg','西尔维斯特·史泰龙,帕斯·贝加,路易·曼迪勒,奥斯卡·贾恩那达,维特·蒙雷尔,华金·科西奥,杰西卡·马德森,艾德里安娜·巴拉扎,塞尔吉奥·佩里斯-门切塔,阿塔纳斯·斯雷布雷夫,尼克·威特','阿德里安·格鲁伯格','','美国','英语','2019','',1,9.3,2019,'西尔维斯特·史泰龙回归[第一滴血5]，并有望执导除主演外，据悉史泰龙将操刀剧本，故事围绕兰博为营救朋友之女与墨西哥毒枭展开殊死搏斗展开。制片艾威·勒纳([敢死队]系列)。该系列首部于1982年上映，2008年史泰龙曾自导自演[第一滴血4]。[第一滴血5]将在本届戛纳电影节预售，9月开拍','卧龙','HD高清$https://cn6.7639616.com/hls/20191123/40e51ecd7b6f111538adf05c61a53331/1574472800/index.m3u8','',''),(2,'第二次也很美',13,'','https://img.kuyun88.com/pic/uploadimg/2019-11/201911202022592993.jpg','','','','大陆','国语','2019','',1,10.0,2019,'1','','第1集$https://cn7.7639616.com/hls/20191121/f7bf45fe32ffb09dc36ee10064b56d27/1574265663/index.m3u8\n第2集$https://cn7.7639616.com/hls/20191121/68a8e87933c7ba17ec580151ab5ed3d8/1574265945/index.m3u8\n第3集$https://cn6.7639616.com/hls/20191122/6a3bba85b671d124d2df9ff377da42e0/1574352064/index.m3u8\n第4集$https://cn6.7639616.com/hls/20191122/ff3f273fa552283b12c680e359452ff7/1574352298/index.m3u8\n第5集$https://cn7.7639616.com/hls/20191123/39d639bc90ec0de9ead0f0ab07c2b1b6/1574439668/index.m3u8\n第6集$https://cn7.7639616.com/hls/20191123/097020d838da469a1549e610f0b73c75/1574439958/index.m3u8\n第7集$https://cn7.7639616.com/hls/20191123/a5d3bb09a1809d4bba95d598a3336996/1574524718/index.m3u8','','');
+/*!40000 ALTER TABLE `le_vod` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `link`
 --
 
@@ -561,7 +641,7 @@ CREATE TABLE `link` (
   `addtime` int(11) NOT NULL COMMENT '添加时间',
   `open` tinyint(2) NOT NULL DEFAULT '0' COMMENT '0禁用1启用',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -570,7 +650,7 @@ CREATE TABLE `link` (
 
 LOCK TABLES `link` WRITE;
 /*!40000 ALTER TABLE `link` DISABLE KEYS */;
-INSERT INTO `link` VALUES (10,'首页','/index/index/index.html',0,'296528828',1,1495183645,0),(22,'动漫','/index/type/index/vodType/4.html',NULL,'',5,1572490345,1),(21,'综艺','/index/type/index/vodType/3.html',NULL,'',4,1572490331,1),(20,'电视剧','/index/type/index/vodType/2.html',NULL,'',3,1572490306,1),(19,'电影','/index/type/index/vodType/1.html',NULL,'',2,1572490275,1),(23,'尝鲜','/index/type/cxlist.html',NULL,'',6,1572490367,1),(24,'直播','/index/index/zblist.html',NULL,'',7,1572490602,1),(25,'音乐','/index/index/music.html',NULL,'',8,1572490626,1),(26,'优惠券','/index/index/taobao.html',NULL,'',9,1572490647,1),(27,'精彩小说','/index/index/book.html',NULL,'',10,1572490690,1),(28,'虎牙轮播','/index/type/huya.html',NULL,'',50,1573979054,1);
+INSERT INTO `link` VALUES (10,'首页','/index/index/index.html',0,'296528828',1,1495183645,0),(22,'动漫','/index/type/index/vodType/4.html',NULL,'',5,1572490345,1),(21,'综艺','/index/type/index/vodType/3.html',NULL,'',4,1572490331,1),(20,'电视剧','/index/type/index/vodType/2.html',NULL,'',3,1572490306,1),(19,'电影','/index/type/index/vodType/1.html',NULL,'',2,1572490275,1),(23,'尝鲜','/index/type/cxlist.html',NULL,'',6,1572490367,1),(24,'直播','/index/index/zblist.html',NULL,'',7,1572490602,1),(25,'音乐','/index/index/music.html',NULL,'',8,1572490626,1),(26,'优惠券','/index/index/taobao.html',NULL,'',9,1572490647,1),(27,'精彩小说','/index/index/book.html',NULL,'',10,1572490690,1),(28,'虎牙轮播','/index/type/huya.html',NULL,'',50,1573979054,1),(29,'站长推荐','/index/type/zztj.html',NULL,'',50,1574918439,1);
 /*!40000 ALTER TABLE `link` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -997,6 +1077,7 @@ CREATE TABLE `system` (
   `vod_quan_switch` varchar(10) DEFAULT NULL COMMENT '全网视频开关，1开，2关',
   `wechat_qq_open_close` varchar(10) DEFAULT NULL COMMENT '微信QQ放屏蔽开关，0是关闭，1是开启',
   `yun_bo_jx_switch` varchar(10) DEFAULT NULL COMMENT '云播解析开关，1是开启，0位关闭',
+  `ru_code` varchar(255) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1007,7 +1088,7 @@ CREATE TABLE `system` (
 
 LOCK TABLES `system` WRITE;
 /*!40000 ALTER TABLE `system` DISABLE KEYS */;
-INSERT INTO `system` VALUES (1,'乐橙CMS','http://rebo.daxwm.com/','乐橙影视','最牛逼的在线影视，乐橙CMS，乐橙影视，院线大片，热映电影，最新电影，MV，音乐','乐橙影视是拥有海量、优质、高清的网络视频的大型视频网站，专业的网络视频播放平台。爱奇艺影视内容丰富多元，涵盖电影、电视剧、动漫、综艺、生活、音乐、搞笑、财经、军事、体育、片花、资讯、微电影、儿童、母婴、教育、科技、时尚、原创、公益、游戏、旅游、拍客、汽车、纪录片、爱奇艺自制剧等剧目。视频播放清晰流畅，操作界面简单友好，真正为用户带来“悦享品质”的在线观看体验。','陕ICP备15008093号-3','2015-2020 橙子科技出品','北京朝阳区128号1','13838389438','296528828@qq.com','/uploads/20191030/4ddafcb8f923093c3a6523841303c988.png','open','close','lecheng','https://www.lanzous.com/i4cq99a','1',24,'cj.wlzy.tv/api/ffs/vod/','www.rebozy.com/api.php/provide/vod/from/rem3u8/at/json/','http://csdnm.cn/?url=','http://csdnm.cn/?url=','公告：欢迎光临乐橙影视，建议手机安装app观看，为了本站的收入，广告是必不可少的，请点击一下广告！让本站走的更远！','','','阿里云播%http://zy.bajieziyuan.com/inc/feifei3/%%%卧龙云播%https://cj.wlzy.tv/api/ffs/vod/%%%最新云播%http://api.zuixinapi.com/inc/feifei3/%%%腾讯云播%http://www.zuidazy1.net/inc/feifei3.4/%%%百度云播%http://api.iokzy.com/inc/feifei3/','热播在线%https://www.rebozy.com/api.php/provide/vod/from/rem3u8/at/json/%%%速播在线%http://www.kukuzy.com/api.php/provide/vod/from/som3u8/at/json/','','http://home.zfbma.cn','#785b87','1','1','1','1','1');
+INSERT INTO `system` VALUES (1,'乐橙CMS','http://rebo.daxwm.com/','乐橙影视','最牛逼的在线影视，乐橙CMS，乐橙影视，院线大片，热映电影，最新电影，MV，音乐','乐橙影视是拥有海量、优质、高清的网络视频的大型视频网站，专业的网络视频播放平台。爱奇艺影视内容丰富多元，涵盖电影、电视剧、动漫、综艺、生活、音乐、搞笑、财经、军事、体育、片花、资讯、微电影、儿童、母婴、教育、科技、时尚、原创、公益、游戏、旅游、拍客、汽车、纪录片、爱奇艺自制剧等剧目。视频播放清晰流畅，操作界面简单友好，真正为用户带来“悦享品质”的在线观看体验。','陕ICP备15008093号-3','2015-2020 橙子科技出品','北京朝阳区128号1','13838389438','296528828@qq.com','/uploads/20191030/4ddafcb8f923093c3a6523841303c988.png','open','close','lecheng','https://www.lanzous.com/i4cq99a','1',24,'zy.bajieziyuan.com/inc/feifei3/','www.rebozy.com/api.php/provide/vod/from/rem3u8/at/json/','https://csdnm.cn/?url=','https://csdnm.cn/?url=','公告：欢迎光临乐橙影视，建议手机安装app观看，为了本站的收入，广告是必不可少的，请点击一下广告！让本站走的更远！','','','阿里云播%http://zy.bajieziyuan.com/inc/feifei3/%%%卧龙云播%https://cj.wlzy.tv/api/ffs/vod/%%%最新云播%http://api.zuixinapi.com/inc/feifei3/%%%腾讯云播%http://www.zuidazy1.net/inc/feifei3.4/%%%百度云播%http://api.iokzy.com/inc/feifei3/','热播在线%https://www.rebozy.com/api.php/provide/vod/from/rem3u8/at/json/%%%速播在线%http://www.kukuzy.com/api.php/provide/vod/from/som3u8/at/json/','','http://home.zfbma.cn','#785b87','1','1','1','1','1','0');
 /*!40000 ALTER TABLE `system` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1361,7 +1442,7 @@ CREATE TABLE `wx_media_item` (
   `hits` int(11) NOT NULL DEFAULT '0' COMMENT '阅读次数',
   PRIMARY KEY (`id`),
   KEY `id` (`media_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=712;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=712;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1554,4 +1635,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25  9:22:36
+-- Dump completed on 2019-11-28 14:57:26

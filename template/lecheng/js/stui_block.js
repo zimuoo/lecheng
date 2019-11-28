@@ -111,7 +111,7 @@ var stui = {
 			});
 		},
 		'qrcode': function() {
-			$("img.qrcode").attr("src", "https://my.tv.sohu.com/user/a/wvideo/getQRCode.do?text=" + encodeURIComponent(stui.browser.url) + "")
+			$("img.qrcode").attr("src", "https://api.uomg.com/api/qrcode?url=" + encodeURIComponent(stui.browser.url) + "")
 		}
 	},
 	'common': {//公共基础

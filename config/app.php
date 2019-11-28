@@ -166,5 +166,5 @@ return [
     //文件上传
     'addwater'=>false,
     'watertext'=>'LECMS',
-     'version'=>'4.0.23'
+     'version'=>'4.0.25'
 ];

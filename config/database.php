@@ -3,9 +3,9 @@ return
 array (
   'type' => 'mysql',
   'hostname' => '127.0.0.1',
-  'database' => '',
-  'username' => '',
-  'password' => '',
+  'database' => 'xiaosaobi',
+  'username' => 'xiaosaobi',
+  'password' => 'ZenNh8G5HyeEXy6n',
   'hostport' => '3306',
   'dsn' => '',
   'params' => 

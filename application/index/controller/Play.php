@@ -185,6 +185,52 @@ class Play extends Controller
 		}	
 	}
 
+	public function zzplay()
+	{
+		$systemConfig=$this->systemConfig;
+		$urlorId=base64_decode(input('url'));
+		$data=$this->getZPlayData($urlorId);
+			//dump($data);die;
+		$this->assign('dyName',$data['dyName']);
+		$this->assign('isDy',2);
+		$this->assign('isYunBo',1);
+		$this->assign('playData',$data?$data:[]);
+		return view("{$systemConfig['vod_template']}/html/vod/play");
+		
+	}
+	public function getZPlayData($vid=1)
+	{
+		$data=Db::table('le_vod')->where(array('vod_id'=>$vid))->find();
+		$data['list_name']=$this->getType($vid);
+
+		if ($data) {
+			$dyName=$data['vod_name'];
+				if(strpos($data['vod_play_url'],'.m3u8')) {
+					$playUrlData = explode('$$$', $data['vod_play_url']);
+					foreach($playUrlData as $k1=>$v1){
+						if(strpos($v1,'.m3u8')){
+							$url1=str_replace("\r\n", '',$v1);
+						}
+					}
+					$url2=explode('.m3u8',$url1);
+					foreach($url2 as $k2=>&$v2){
+						if($v2 !=''){
+							$v2=trim(strrchr($v2, '$'),'$').'.m3u8';
+							$url3[]['lianjie']=$v2;
+						}else{
+							unset($url2[$k2]);
+						}
+					}
+				}
+		}
+		return ['dyName'=>$dyName,'other'=>$data,'playData'=>[['playType'=>'官方云播','urlData'=>$url3]]];
+	}
+	public function getType($tid)
+    {
+    	$typeData=db('le_type')->where('type_id',$tid)->find();
+    	return $typeData['type_name'];
+    }
+
 	public function getYuanZy($type,$url)
 	{
 		$service = $this->service;

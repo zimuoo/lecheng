@@ -4,6 +4,7 @@ use think\Db;
 use think\Request;
 use think\Controller;
 use think\facade\Env;
+
 class UpFiles extends Common
 {
     public function upload(){
@@ -12,13 +13,15 @@ class UpFiles extends Common
         // 获取表单上传文件
         $file = request()->file($fileKey['0']);
         // 移动到框架应用根目录/public/uploads/ 目录下
-
+		//$domain_name = Request::domain();
+		
         $info = $file->validate(['ext' => 'jpg,png,gif,jpeg'])->move('uploads');
         if($info){
             $result['code'] = 1;
             $result['info'] = '图片上传成功!';
             $path=str_replace('\\','/',$info->getSaveName());
-            $result['url'] = '/public/uploads/'. $path;
+            $xieyi=((int)$_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http') . '://';
+            $result['url'] = $xieyi.$_SERVER['HTTP_HOST'].'/uploads/'. $path;
             return $result;
         }else{
             // 上传失败获取错误信息
@@ -34,13 +37,13 @@ class UpFiles extends Common
         // 获取表单上传文件 例如上传了001.jpg
         $file = request()->file($fileKey['0']);
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $file->validate(['ext' => 'zip,rar,pdf,swf,ppt,psd,ttf,txt,xls,doc,docx'])->move('uploads');
+        $info = $file->validate(['ext' => 'zip,rar,pdf,swf,ppt,psd,ttf,txt,xls,doc,docx,mp4'])->move('uploads');
         if($info){
             $result['code'] = 0;
             $result['info'] = '文件上传成功!';
             $path=str_replace('\\','/',$info->getSaveName());
 
-            $result['url'] = '/public/uploads/'. $path;
+            $result['url'] = '/uploads/'. $path;
             $result['ext'] = $info->getExtension();
             $result['size'] = byte_format($info->getSize(),2);
             return $result;
@@ -63,7 +66,7 @@ class UpFiles extends Common
             $result['code'] = 1;
             $result['info'] = '图片上传成功!';
             $path=str_replace('\\','/',$info->getSaveName());
-            $result['url'] = '/public/uploads/'. $path;
+            $result['url'] = '/uploads/'. $path;
             return json_encode($result,true);
         }else{
             // 上传失败获取错误信息
@@ -86,7 +89,7 @@ class UpFiles extends Common
         $info = $file->validate(['ext' => 'jpg,png,gif,jpeg'])->move('uploads');
         if($info){
             $path=str_replace('\\','/',$info->getSaveName());
-            return '/public/uploads/'. $path;
+            return '/uploads/'. $path;
         }else{
             // 上传失败获取错误信息
             $result['code'] =1;
@@ -106,7 +109,7 @@ class UpFiles extends Common
             $result['code'] = 0;
             $result['msg'] = '图片上传成功!';
             $path=str_replace('\\','/',$info->getSaveName());
-            $result["src"] = '/public/uploads/'. $path;
+            $result["src"] = '/uploads/'. $path;
             return $result;
         }else{
             // 上传失败获取错误信息
@@ -134,7 +137,7 @@ class UpFiles extends Common
         $info = $file->validate(['ext'=>$allowExtesions[input('fileType')]])->move('./uploads');
         if($info){
             $path=str_replace('\\','/',$info->getSaveName());
-            $url = '/public/uploads/'. $path;
+            $url = '/uploads/'. $path;
             $result['code'] = '000';
             $result['message'] = '图片上传成功!';
             $result['item'] = ['url'=>$url];
